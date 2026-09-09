@@ -15,6 +15,11 @@ from pgvector.psycopg import register_vector
 
 def get_connection() -> psycopg.Connection:
     database_url = os.environ["DATABASE_URL"]
-    conn = psycopg.connect(database_url, autocommit=True)
-    register_vector(conn)
+    conn = psycopg.connect(database_url, autocommit=True, connect_timeout=5,
+                           options="-c statement_timeout=5000")
+    try:
+        register_vector(conn)
+    except Exception:
+        conn.close()
+        raise
     return conn

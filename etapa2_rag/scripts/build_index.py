@@ -10,6 +10,7 @@ Uso: desde etapa2_rag/, `python scripts/build_index.py`
 
 import json
 import sys
+import time
 from pathlib import Path
 
 import numpy as np
@@ -18,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 from rag.db import get_connection  # noqa: E402
 from rag.embeddings import embed_documents  # noqa: E402
@@ -43,7 +44,13 @@ INSERT INTO chunks (
 ON CONFLICT (chunk_id) DO UPDATE SET
     texto = EXCLUDED.texto,
     embedding = EXCLUDED.embedding,
+    id = EXCLUDED.id,
+    nivel1 = EXCLUDED.nivel1,
+    ley_referenciada = EXCLUDED.ley_referenciada,
     articulo = EXCLUDED.articulo,
+    articulo_sufijo = EXCLUDED.articulo_sufijo,
+    articulo_nombre = EXCLUDED.articulo_nombre,
+    parte = EXCLUDED.parte,
     titulo_numero = EXCLUDED.titulo_numero,
     titulo_nombre = EXCLUDED.titulo_nombre,
     ambito = EXCLUDED.ambito,
@@ -68,20 +75,23 @@ def main() -> None:
     indexados = 0
 
     for batch in batched(chunks, BATCH_SIZE):
+        if indexados:
+            time.sleep(1.1)
         textos = [c["texto"] for c in batch]
         vectores = embed_documents(textos)
 
-        with conn.cursor() as cur:
-            for chunk, vector in zip(batch, vectores):
-                # numpy.array: register_vector() (rag/db.py) solo sabe
-                # convertir arrays de numpy al tipo `vector` de pgvector.
-                params = {**chunk, "embedding": np.array(vector)}
-                cur.execute(UPSERT_SQL, params)
+        with conn.transaction():
+            with conn.cursor() as cur:
+                for chunk, vector in zip(batch, vectores, strict=True):
+                    # Lote atómico: un vector inválido no deja medio lote escrito.
+                    params = {**chunk, "embedding": np.array(vector)}
+                    cur.execute(UPSERT_SQL, params)
 
         indexados += len(batch)
-        print(f"  Indexados {indexados}/{len(chunks)}")
+        print(f"  Indexados {indexados}/{len(chunks)}", flush=True)
 
     with conn.cursor() as cur:
+        cur.execute("ANALYZE chunks")
         cur.execute("SELECT count(*) FROM chunks")
         total = cur.fetchone()[0]
     conn.close()
@@ -90,4 +100,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as exc:
+        print(f"Indexación detenida: {type(exc).__name__}; revisar conexión/cuota. No se borraron datos.")
+        raise SystemExit(1) from None

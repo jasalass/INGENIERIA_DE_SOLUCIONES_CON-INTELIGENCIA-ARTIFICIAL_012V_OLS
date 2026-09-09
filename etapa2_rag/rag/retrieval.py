@@ -12,14 +12,14 @@ por metadatos").
 
 import numpy as np
 
-from rag.db import get_connection
-from rag.embeddings import embed_query
+from .db import get_connection
+from .embeddings import embed_query
 
-FILTERABLE_FIELDS = {"articulo", "titulo_numero", "ambito"}
+FILTERABLE_FIELDS = {"articulo", "articulo_sufijo", "titulo_numero", "ambito"}
 
 BASE_SELECT = """
 SELECT chunk_id, articulo, articulo_sufijo, articulo_nombre, titulo_numero,
-       titulo_nombre, ambito, parte, texto, fuente,
+       titulo_nombre, ambito, parte, texto, fuente, nivel1, ley_referenciada,
        fecha_publicacion, fecha_promulgacion,
        embedding <=> %(query_embedding)s AS distancia
 FROM chunks
@@ -33,6 +33,10 @@ def search(query: str, top_k: int = 5, filtros: dict | None = None) -> list[dict
     (ej. {"articulo": "12"}) para acotar la busqueda por metadatos antes
     de rankear por distancia coseno.
     """
+    if not 1 <= top_k <= 20:
+        raise ValueError("top_k debe estar entre 1 y 20")
+    if set(filtros or {}) - FILTERABLE_FIELDS:
+        raise ValueError("Filtro no permitido")
     # register_vector() (rag/db.py) solo sabe convertir numpy.ndarray al
     # tipo `vector` de pgvector -- una lista plana de Python se manda
     # como double precision[] y pgvector la rechaza en el operador `<=>`.
@@ -44,20 +48,27 @@ def search(query: str, top_k: int = 5, filtros: dict | None = None) -> list[dict
     for campo, valor in (filtros or {}).items():
         if campo not in FILTERABLE_FIELDS:
             raise ValueError(f"Filtro no permitido: {campo!r} (validos: {FILTERABLE_FIELDS})")
-        where_clauses.append(f"{campo} = %({campo})s")
-        params[campo] = valor
+        if valor is None:
+            where_clauses.append(f"{campo} IS NULL")
+        else:
+            where_clauses.append(f"{campo} = %({campo})s")
+            params[campo] = valor
 
     sql = BASE_SELECT
     if where_clauses:
         sql += "WHERE " + " AND ".join(where_clauses) + "\n"
-    sql += "ORDER BY distancia ASC LIMIT %(top_k)s"
+    sql += "ORDER BY distancia ASC, chunk_id ASC LIMIT %(top_k)s"
 
     conn = get_connection()
     try:
-        with conn.cursor() as cur:
-            cur.execute(sql, params)
-            columnas = [desc.name for desc in cur.description]
-            filas = cur.fetchall()
+        with conn.transaction():
+            with conn.cursor() as cur:
+                # 140 filas: ranking exacto, sin pérdida de recall por IVFFlat
+                # creado sobre tabla vacía o por aplicar filtros a un índice ANN.
+                cur.execute("SET LOCAL enable_indexscan = off")
+                cur.execute(sql, params)
+                columnas = [desc.name for desc in cur.description]
+                filas = cur.fetchall()
     finally:
         conn.close()
 

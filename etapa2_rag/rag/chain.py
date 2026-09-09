@@ -16,8 +16,8 @@ import os
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 
-from rag.prompts import SYSTEM_PROMPT, USER_TEMPLATE, build_context
-from rag.retrieval import search
+from .prompts import SYSTEM_PROMPT, USER_TEMPLATE, build_context
+from .retrieval import search
 
 TOP_K = 5
 

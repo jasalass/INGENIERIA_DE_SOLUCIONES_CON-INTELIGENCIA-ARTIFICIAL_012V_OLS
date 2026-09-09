@@ -3,6 +3,12 @@
 Evaluación Parcial N°1 — ISY0101 Ingeniería de Soluciones con IA.
 Sistema RAG (Retrieval-Augmented Generation) que responde consultas sobre la Ley N°21.719 con respuestas trazables a artículos, expuesto vía API y consumido desde una interfaz de chat en navegador.
 
+> **Sistema integrado:** embeddings Mistral → pgvector → generación Groq, API, chat, citas numeradas y memoria de corto plazo. **Empieza por [INSTALACION.md](INSTALACION.md)** para clonar, configurar `.env`, levantar Docker e indexar. No necesitas copiar un entorno virtual ni la base de otro integrante.
+
+> **Estado de esta rama (09-09-2026):** 140/140 fragmentos auditados, 50 pruebas Python y 6 pruebas de citas JavaScript. Última batería funcional real: 16/16 checks. Ver [integración](docs/INTEGRACION_VECTORIAL_20260909.md), [contrato con Juan](etapa3_producto/INTEGRACION_JUAN.md) y [límites de fidelidad conocidos](docs/CORRECCION_CONTEXTO_DOCUMENTAL_20260909.md). Los informes con «sin push» describen las verificaciones históricas anteriores a preparar esta publicación.
+
+> **Corrección posterior:** procedencia del documento y contexto de página 1 incorporados; **50/50 tests offline y 16/16 casos HTTP finales**. Incluye la pregunta general por la Ley 21.719 que falló en la prueba del usuario. [Diagnóstico, cambios y evidencia](docs/CORRECCION_CONTEXTO_DOCUMENTAL_20260909.md). El PDF y los 140 chunks originales permanecen intactos.
+
 ## Equipo
 
 - Juan Salas

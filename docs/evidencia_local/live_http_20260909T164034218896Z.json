@@ -1,0 +1,404 @@
+{
+  "captured_at_utc": "2026-09-09T16:40:34.218896+00:00",
+  "health": {
+    "status": "ok",
+    "mode": "live",
+    "retrieval": "pgvector_cosine_exact",
+    "generation": "groq",
+    "model": "qwen/qwen3.6-27b",
+    "memory": "in_process",
+    "memory_exchanges": 6,
+    "session_ttl_seconds": 3600,
+    "provider_reachable": "not_checked"
+  },
+  "scope": "Consultas HTTP reales; checks funcionales, no evaluación jurídica exhaustiva. Datos de usuario ficticios.",
+  "passed": 11,
+  "total": 11,
+  "cases": [
+    {
+      "case": "Presentación",
+      "request": {
+        "message": "Hola, me llamo Felipe",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "Hola Felipe, un gusto saludarte.",
+        "conversation_id": "ca0efed453f342da9de6eafa77a4ae21",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": false,
+        "retrieval_query": "Hola, me llamo Felipe",
+        "turn_count": 1,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 826.77,
+          "retrieval": 0.0,
+          "generation": 451.09,
+          "total": 1380.07
+        }
+      }
+    },
+    {
+      "case": "Recuerdo de nombre",
+      "request": {
+        "message": "¿Cómo me llamaba?",
+        "conversation_id": "ca0efed453f342da9de6eafa77a4ae21",
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "Te llamas Felipe.",
+        "conversation_id": "ca0efed453f342da9de6eafa77a4ae21",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": false,
+        "retrieval_query": "¿Cómo me llamaba?",
+        "turn_count": 2,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 371.65,
+          "retrieval": 0.0,
+          "generation": 509.45,
+          "total": 881.81
+        }
+      }
+    },
+    {
+      "case": "Sesión nueva sin nombre",
+      "request": {
+        "message": "¿Cómo me llamo?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No recuerdo tu nombre, ya que no aparece en esta conversación.",
+        "conversation_id": "aecf5fdc76e448eeac1a9bd37c88496d",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Cómo me llamo?",
+        "turn_count": 1,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 460.43,
+          "retrieval": 0.0,
+          "generation": 435.97,
+          "total": 897.11
+        }
+      }
+    },
+    {
+      "case": "Artículo con cita",
+      "request": {
+        "message": "¿Qué dice el artículo 4?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El artículo 4° establece los derechos del titular de datos, que incluyen acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales [art-4]. Estos derechos son personales, intransferibles e irrenunciables, y no pueden limitarse por ningún acto o convención [art-4]. En caso de fallecimiento del titular, los derechos pueden ser ejercidos por sus herederos, salvo que la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley, impidiendo en tales casos el acceso, rectificación o supresión [art-4].",
+        "conversation_id": "5077c5bd3d3e4f0db395650d9387dc6a",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "art-4",
+            "texto": "Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley.",
+            "articulo": "4",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.8014236029029238,
+            "label": "Artículo 4 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 4?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.02,
+          "retrieval": 572.62,
+          "generation": 872.52,
+          "total": 1446.02
+        }
+      }
+    },
+    {
+      "case": "Seguimiento documental",
+      "request": {
+        "message": "¿Y eso cómo funciona?",
+        "conversation_id": "5077c5bd3d3e4f0db395650d9387dc6a",
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El contexto proporcionado no contiene información sobre el procedimiento específico para ejercer estos derechos, limitándose a enumerarlos y establecer su naturaleza intransferible e irrenunciable [art-4]. Tampoco detalla los mecanismos de solicitud o las excepciones procedimentales, más allá de la prohibición expresa del causante o legal que impide a los herederos acceder, rectificar o suprimir datos [art-4]. Por lo tanto, no es posible explicar cómo funciona el proceso con la evidencia disponible.",
+        "conversation_id": "5077c5bd3d3e4f0db395650d9387dc6a",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "art-4",
+            "texto": "Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley.",
+            "articulo": "4",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.9048779135559673,
+            "label": "Artículo 4 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": true,
+        "retrieval_query": "¿Cómo funcionan los derechos de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de datos personales establecidos en el artículo 4?",
+        "turn_count": 2,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 792.34,
+          "retrieval": 430.41,
+          "generation": 717.59,
+          "total": 1941.23
+        }
+      }
+    },
+    {
+      "case": "Artículo inexistente",
+      "request": {
+        "message": "¿Qué dice el artículo 999?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No encontré fragmentos suficientes para responder en el documento y ámbito seleccionados. Prueba indicando un artículo o ampliando la búsqueda.",
+        "conversation_id": "bbfb0e47b02c4caf9a61ba6c6297be78",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Qué dice el artículo 999?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.03,
+          "retrieval": 433.31,
+          "generation": 0.06,
+          "total": 434.18
+        }
+      }
+    },
+    {
+      "case": "Filtro transitorio",
+      "request": {
+        "message": "¿Qué dice el artículo 4?",
+        "conversation_id": null,
+        "filters": {
+          "ambito": "transitorio"
+        }
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No encontré fragmentos suficientes para responder en el documento y ámbito seleccionados. Prueba indicando un artículo o ampliando la búsqueda.",
+        "conversation_id": "6c29ac83d1a942f5ada7dfd595fe1347",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Qué dice el artículo 4?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.03,
+          "retrieval": 452.46,
+          "generation": 0.09,
+          "total": 453.44
+        }
+      }
+    },
+    {
+      "case": "Búsqueda semántica",
+      "request": {
+        "message": "¿Qué derechos tiene el titular de datos personales?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El titular de datos personales tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales [art-4]. Estos derechos son personales, intransferibles e irrenunciables [art-4]. Además, se reconoce el derecho a solicitar ante el responsable el acceso, rectificación, supresión, oposición y portabilidad [art-14-ter-p2]. El titular también tiene derecho a recurrir ante la Agencia si el responsable rechaza o no responde oportunamente sus solicitudes [art-14-ter-p2]. Cuando el tratamiento se basa en consentimiento, existe el derecho a retirarlo en cualquier momento [art-14-ter-p2].",
+        "conversation_id": "204ff0cb46a54558bf77659ca61f7ae9",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "art-4",
+            "texto": "Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley.",
+            "articulo": "4",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.8755634322242463,
+            "label": "Artículo 4 · Ley 19.628",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "art-14-ter-p2",
+            "texto": "f) El derecho que le asiste al titular para solicitar ante el responsable, acceso, rectificación, supresión, oposición y portabilidad de sus datos personales, de conformidad a la ley.\n\ng) El derecho que le asiste al titular de recurrir ante la Agencia, en caso de que el responsable rechace o no responda oportunamente las solicitudes que le formule.\n\nh) En su caso, la transferencia de datos personales a un tercer país u organización internacional y si éstos ofrecen o no un nivel adecuado de protección. En caso de que no cuenten con un nivel adecuado de protección, se deberá informar si existen garantías que justifiquen tal transferencia.\n\ni) El periodo durante el que se conservarán los datos personales.\n\nj) La fuente de la cual provienen los datos personales y, en su caso, si proceden de fuentes de acceso público.\n\nk) Cuando el tratamiento está basado en el consentimiento del titular, la existencia del derecho a retirarlo en cualquier momento, sin que ello afecte a la licitud del tratamiento basado en el consentimiento previo a su retirada.\n\nl) La existencia de decisiones automatizadas, incluida la elaboración de perfiles. En tales casos, información significativa sobre la lógica aplicada, así como las consecuencias previstas de dicho tratamiento para el titular.",
+            "articulo": "14",
+            "articulo_sufijo": "ter",
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "2/2",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Del tratamiento de los datos personales y de las categorías especiales de datos Párrafo Primero Del consentimiento del titular, de las obligaciones y deberes del responsable y del tratamiento de datos en general",
+            "score": 0.8729394536300075,
+            "label": "Artículo 14 ter · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué derechos tiene el titular de datos personales?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 414.37,
+          "retrieval": 403.43,
+          "generation": 1057.89,
+          "total": 1876.47
+        }
+      }
+    },
+    {
+      "case": "Artículo bis",
+      "request": {
+        "message": "¿Qué dice el artículo 1 bis?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El artículo 1° bis establece el ámbito de aplicación territorial de la ley. Se aplica al tratamiento de datos personales cuando: a) el responsable o mandatario estén establecidos en el territorio nacional; b) el mandatario realice operaciones a nombre de un responsable establecido en Chile; o c) el responsable o mandatario, aunque no estén establecidos en el país, destinen sus operaciones a ofrecer bienes o servicios a titulares en Chile, o monitoreen su comportamiento. También se aplica si la legislación nacional resulta aplicable al responsable por contrato o derecho internacional, sin estar establecido en el territorio nacional [art-1-bis].",
+        "conversation_id": "fbfb3205efd648d4ac0218e8096b48dc",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "art-1-bis",
+            "texto": "\"Artículo 1° bis.- Ámbito de aplicación territorial. Las disposiciones de la presente ley se aplicarán al tratamiento de datos personales que se realice bajo cualquiera de las siguientes circunstancias:\n\na) Cuando el responsable o mandatario estén establecidos o constituidos en el territorio nacional.\n\nb) Cuando el mandatario, con independencia de su lugar de establecimiento o constitución, realice las operaciones de tratamiento de datos personales a nombre de un responsable establecido o constituido en el territorio nacional.\n\nc) Cuando el responsable o mandatario no se encuentren establecidos en el territorio nacional pero sus operaciones de tratamiento de datos personales estén destinadas a ofrecer bienes o servicios a titulares que se encuentren en Chile, independientemente de si a éstos se les requiere un pago, o a monitorear el comportamiento de titulares que se encuentran en el territorio nacional, incluyendo su análisis, rastreo, perfilamiento o predicción de comportamiento.\n\nLa presente ley también se aplicará al tratamiento de datos personales que sea realizado por un responsable al que, sin estar establecido en el territorio nacional, le resulte aplicable la legislación nacional a causa de un contrato o del derecho internacional.\".",
+            "articulo": "1",
+            "articulo_sufijo": "bis",
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.7924056329994451,
+            "label": "Artículo 1 bis · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 1 bis?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.03,
+          "retrieval": 462.42,
+          "generation": 680.8,
+          "total": 1144.04
+        }
+      }
+    },
+    {
+      "case": "Transitorios con resultados",
+      "request": {
+        "message": "¿Cuándo entra en vigencia la ley según sus disposiciones transitorias?",
+        "conversation_id": null,
+        "filters": {
+          "ambito": "transitorio"
+        }
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "Según la disposición transitoria primera, las modificaciones a las leyes N° 19.628, N° 20.285 y N° 19.496 entrarán en vigencia el día primero del mes vigésimo cuarto posterior a la publicación de la ley en el Diario Oficial [transitorio-primero].",
+        "conversation_id": "8bd511c2a03347e080cea8bd447b7c04",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "transitorio-primero",
+            "texto": "Artículo primero.- Las modificaciones a las leyes N° 19.628, sobre protección de la vida privada; N° 20.285, sobre acceso a la información pública, y N° 19.496, que establece normas sobre protección de los derechos de los consumidores, contenidas en los artículos primero, segundo y tercero permanentes de la presente ley, respectivamente, entrarán en vigencia el día primero del mes vigésimo cuarto posterior a la publicación de esta ley en el Diario Oficial.",
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "transitorio",
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.8406138140729253,
+            "label": "Disposición transitoria: primero",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Cuándo entra en vigencia la ley según sus disposiciones transitorias?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 333.58,
+          "retrieval": 474.98,
+          "generation": 531.23,
+          "total": 1340.59
+        }
+      }
+    },
+    {
+      "case": "Fuera de tema",
+      "request": {
+        "message": "¿Cómo preparo una pizza margarita?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No tengo información sobre cómo preparar una pizza margarita. Los fragmentos proporcionados corresponden a la Ley 19.628 sobre protección de datos personales, específicamente artículos sobre procedimientos ante el responsable de datos y deberes de información y transparencia.",
+        "conversation_id": "6c9f8e2c8123403480a96a398056dd92",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Cómo preparo una pizza margarita?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 448.03,
+          "retrieval": 403.97,
+          "generation": 912.43,
+          "total": 1765.34
+        }
+      }
+    }
+  ]
+}

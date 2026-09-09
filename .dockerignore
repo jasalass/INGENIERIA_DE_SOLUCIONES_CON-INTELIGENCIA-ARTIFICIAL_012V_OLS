@@ -1,0 +1,12 @@
+.git
+.venv
+venv
+env
+ENV
+node_modules
+.env
+.env.*
+**/__pycache__
+**/*.pyc
+**/tests
+docs/evidencia_local
