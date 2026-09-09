@@ -25,7 +25,7 @@ import re
 
 import pymupdf as fitz
 
-PDF_PATH = "Docs/Ley-21719_13-DIC-2024.pdf"
+PDF_PATH = "docs/Ley-21719_13-DIC-2024.pdf"
 RAW_TEXT_PATH = "etapa1_datos/data/interim/01_raw_text.txt"
 METADATA_PATH = "etapa1_datos/data/interim/metadata.json"
 
