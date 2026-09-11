@@ -3,6 +3,8 @@
 Evaluación Parcial N°1 — ISY0101 Ingeniería de Soluciones con IA.
 Sistema RAG (Retrieval-Augmented Generation) que responde consultas sobre la Ley N°21.719 con respuestas trazables a artículos, expuesto vía API y consumido desde una interfaz de chat en navegador.
 
+📐 **[Diagrama de arquitectura](docs/arquitectura.html)** — preparación del índice y flujo de una consulta, paso a paso (IE4/IE7).
+
 ## Equipo
 
 - Juan Salas
