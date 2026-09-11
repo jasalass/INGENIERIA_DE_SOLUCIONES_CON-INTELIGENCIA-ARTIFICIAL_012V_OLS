@@ -1,0 +1,304 @@
+<title>Arquitectura RAG — Ley 21.719</title>
+<meta name="description" content="Diagrama de arquitectura del asistente RAG sobre la Ley N°21.719: preparación del índice y flujo de una consulta, paso a paso, con quién construyó cada pieza." />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #F6F5F1;
+    --surface: #FFFFFF;
+    --surface-2: #F0EEE7;
+    --ink: #1E2530;
+    --ink-dim: #5B6472;
+    --line: #D7D9DC;
+    --pamela: #B9740A;
+    --juan: #0E7C78;
+    --jenaro: #6E4FA3;
+    --external: #8A8F98;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14181F; --surface: #1C222C; --surface-2: #222937;
+      --ink: #ECEEF2; --ink-dim: #A7AEBB; --line: #333B49;
+      --pamela: #E3A542; --juan: #3FC6C2; --jenaro: #B29AE0; --external: #7A8290;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14181F; --surface: #1C222C; --surface-2: #222937;
+    --ink: #ECEEF2; --ink-dim: #A7AEBB; --line: #333B49;
+    --pamela: #E3A542; --juan: #3FC6C2; --jenaro: #B29AE0; --external: #7A8290;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    padding-inline: max(20px, calc((100% - 1200px) / 2));
+    padding-block: 48px 72px;
+  }
+
+  header.page { max-width: 760px; margin-bottom: 40px; }
+  .eyebrow {
+    font: 600 12px 'IBM Plex Mono', monospace; letter-spacing: .09em; text-transform: uppercase;
+    color: var(--juan); margin: 0 0 10px;
+  }
+  h1 { font: 700 33px/1.15 'IBM Plex Sans', sans-serif; text-wrap: balance; margin: 0 0 14px; letter-spacing: -0.01em; }
+  header.page p { font: 400 16.5px/1.6 'IBM Plex Sans', sans-serif; color: var(--ink-dim); max-width: 62ch; margin: 0; }
+
+  section.figure-block { margin-block: 52px; }
+  section.figure-block h2 { font: 700 20px/1.3 'IBM Plex Sans', sans-serif; margin: 0 0 4px; }
+  .figure-kicker { font: 500 12.5px 'IBM Plex Mono', monospace; color: var(--ink-dim); margin: 0 0 18px; }
+
+  .diagram-scroll {
+    overflow-x: auto; border: 1px solid var(--line); border-radius: 14px;
+    background: var(--surface); padding: 10px;
+  }
+  .diagram-scroll svg { display: block; }
+  figcaption { font: 400 14.5px/1.55 'IBM Plex Sans', sans-serif; color: var(--ink-dim); max-width: 80ch; margin: 14px 2px 0; }
+  figcaption b { color: var(--ink); font-weight: 600; }
+  figcaption code { font-family: 'IBM Plex Mono', monospace; font-size: 0.93em; }
+
+  .dtitle    { fill: var(--ink); font: 700 16.5px 'IBM Plex Sans', sans-serif; }
+  .dtitle-c  { fill: var(--ink); font: 600 15px 'IBM Plex Sans', sans-serif; }
+  .dtech     { fill: var(--ink-dim); font: 500 11.5px 'IBM Plex Mono', monospace; }
+  .ddesc     { fill: var(--ink-dim); font: 400 12.5px 'IBM Plex Sans', sans-serif; }
+  .dlabel    { fill: var(--ink-dim); font: 500 11.5px 'IBM Plex Sans', sans-serif; }
+  .dboundarylabel { fill: var(--ink-dim); font: 600 11.5px 'IBM Plex Mono', monospace; letter-spacing: .06em; }
+  .dquote    { fill: var(--ink); font: 500 13.5px 'IBM Plex Mono', monospace; }
+  .dquote-sm { fill: var(--ink-dim); font: 400 11px 'IBM Plex Sans', sans-serif; }
+  .dbadge    { fill: #fff; font: 700 16px 'IBM Plex Sans', sans-serif; }
+
+  .dbox    { fill: var(--surface); stroke: var(--line); stroke-width: 1.4; }
+  .dbox-ex { fill: var(--surface); stroke: var(--external); stroke-width: 1.4; stroke-dasharray: 5 4; }
+  .dpill   { fill: var(--surface-2); stroke: var(--line); stroke-width: 1.2; }
+
+  .stripe-juan   { fill: var(--juan); }
+  .stripe-jenaro { fill: var(--jenaro); }
+  .stripe-pamela { fill: var(--pamela); }
+  .badge-juan    { fill: var(--juan); }
+  .badge-jenaro  { fill: var(--jenaro); }
+
+  .dline      { stroke: var(--ink-dim); stroke-width: 1.6; fill: none; }
+  .dline-soft { stroke: var(--ink-dim); stroke-width: 1.3; fill: none; opacity: .75; }
+  .dboundary  { stroke: var(--line); stroke-width: 1.6; stroke-dasharray: 7 6; fill: none; }
+  .arrow-fill { fill: var(--ink-dim); }
+  .icon { color: var(--ink-dim); fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 16px;
+    padding: 16px 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface);
+  }
+  .legend-item { display: flex; align-items: center; gap: 9px; font: 400 13.5px 'IBM Plex Sans', sans-serif; color: var(--ink-dim); }
+  .legend-item b { color: var(--ink); font-weight: 600; }
+  .dot { width: 13px; height: 13px; border-radius: 50%; flex: none; }
+  .dot-line { width: 20px; height: 0; border-top: 1.6px dashed var(--external); }
+
+  footer.page { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line); font: 400 13px 'IBM Plex Mono', monospace; color: var(--ink-dim); }
+
+  @media (max-width: 640px) { h1 { font-size: 26px; } }
+</style>
+
+<header class="page">
+  <p class="eyebrow">EP1 · ISY0101 — Ingeniería de Soluciones con IA</p>
+  <h1>Arquitectura del asistente RAG — Ley N°21.719</h1>
+  <p>Cómo responde el sistema a una pregunta sobre la Ley de Protección de Datos Personales, con la fuente citada. Dos figuras: cómo se prepara el índice una sola vez, y qué pasa paso a paso cuando alguien pregunta.</p>
+</header>
+
+<section class="figure-block">
+  <h2>Figura 1 — Preparación del índice</h2>
+  <p class="figure-kicker">se corre una sola vez, antes de que exista tráfico de usuarios</p>
+  <div class="diagram-scroll">
+    <svg viewBox="0 0 1600 300" width="1600" height="300" role="img" aria-label="El PDF oficial de la Ley 21.719 pasa por cinco scripts de Pamela que lo limpian y lo dividen en 140 chunks (chunks.json); build_index.py de Juan calcula sus embeddings con la API de Mistral y los guarda en la base pgvector.">
+      <defs>
+        <marker id="arrow1" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path class="arrow-fill" d="M0,0 L10,5 L0,10 z" />
+        </marker>
+      </defs>
+
+      <rect class="dbox" x="20" y="95" width="220" height="110" rx="10"/>
+      <text class="dtitle-c" x="130" y="132" text-anchor="middle">PDF oficial</text>
+      <text class="dtech" x="130" y="152" text-anchor="middle">Ley-21719...pdf</text>
+      <text class="ddesc" x="130" y="172" text-anchor="middle">56 páginas</text>
+      <text class="ddesc" x="130" y="188" text-anchor="middle">leychile.cl</text>
+      <line class="dline" x1="240" y1="150" x2="298" y2="150" marker-end="url(#arrow1)"/>
+
+      <rect class="dbox" x="300" y="50" width="440" height="210" rx="12"/>
+      <rect class="stripe-pamela" x="300" y="50" width="6" height="210" rx="3"/>
+      <text class="dtitle" x="332" y="82">Etapa 1 — Datos</text>
+      <text class="dtech" x="332" y="99" fill="var(--pamela)">PAMELA</text>
+      <text class="ddesc" x="332" y="120">limpia el PDF y lo divide en fragmentos</text>
+      <text class="ddesc" x="332" y="136">citables, uno por artículo</text>
+      <text class="dtech" x="332" y="162">extract_pdf.py</text>
+      <text class="dtech" x="332" y="180">clean_text.py</text>
+      <text class="dtech" x="332" y="198">parse_structure.py</text>
+      <text class="dtech" x="332" y="216">chunk_and_export.py</text>
+      <text class="dtech" x="332" y="234">validate_chunks.py</text>
+      <line class="dline" x1="740" y1="150" x2="798" y2="150" marker-end="url(#arrow1)"/>
+
+      <rect class="dbox" x="800" y="95" width="220" height="110" rx="10"/>
+      <text class="dtitle-c" x="910" y="132" text-anchor="middle">chunks.json</text>
+      <text class="dtech" x="910" y="152" text-anchor="middle">140 chunks</text>
+      <text class="ddesc" x="910" y="172" text-anchor="middle">1 artículo =</text>
+      <text class="ddesc" x="910" y="188" text-anchor="middle">1 chunk</text>
+      <line class="dline" x1="1020" y1="150" x2="1078" y2="150" marker-end="url(#arrow1)"/>
+
+      <rect class="dbox" x="1080" y="60" width="340" height="190" rx="12"/>
+      <rect class="stripe-juan" x="1080" y="60" width="6" height="190" rx="3"/>
+      <text class="dtitle" x="1112" y="92">Etapa 2 — Motor RAG</text>
+      <text class="dtech" x="1112" y="109" fill="var(--juan)">JUAN</text>
+      <text class="ddesc" x="1112" y="130">convierte cada fragmento en un</text>
+      <text class="ddesc" x="1112" y="146">vector y lo indexa</text>
+      <text class="dtech" x="1112" y="172">build_index.py</text>
+      <text class="dtech" x="1112" y="190">embed_documents() → Mistral</text>
+      <text class="dtech" x="1112" y="208">UPSERT chunk_id → pgvector</text>
+      <line class="dline" x1="1420" y1="150" x2="1478" y2="150" marker-end="url(#arrow1)"/>
+
+      <rect class="dbox" x="1480" y="95" width="100" height="110" rx="10"/>
+      <ellipse class="icon" cx="1530" cy="122" rx="26" ry="9"/>
+      <path class="icon" d="M1504,122 V152 a26,9 0 0 0 52,0 V122"/>
+      <path class="icon" d="M1504,137 a26,9 0 0 0 52,0"/>
+      <text class="ddesc" x="1530" y="190" text-anchor="middle">pgvector</text>
+    </svg>
+  </div>
+  <figcaption>El texto oficial se limpia y se divide con la regla <b>1 artículo = 1 chunk</b> (5 scripts de Pamela); Juan calcula el embedding de cada chunk con <code>mistral-embed</code> y lo guarda en Postgres+pgvector. Este proceso no vuelve a correr en cada consulta.</figcaption>
+</section>
+
+<section class="figure-block">
+  <h2>Figura 2 — Flujo de una consulta</h2>
+  <p class="figure-kicker">se ejecuta de principio a fin en cada mensaje que envía un usuario</p>
+  <div class="diagram-scroll">
+    <svg viewBox="0 0 1120 1080" width="1120" height="1080" role="img" aria-label="Un usuario escribe una pregunta en el chat. El frontend la envía a la API, que primero clasifica si es sobre la ley o charla personal. Si es sobre la ley: busca los chunks más parecidos en pgvector usando un embedding de Mistral, redacta la respuesta citando artículos con un modelo de Groq, y valida que esas citas sean reales antes de responder. La respuesta vuelve al usuario con sus fuentes.">
+      <defs>
+        <marker id="arrow2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+          <path class="arrow-fill" d="M0,0 L10,5 L0,10 z" />
+        </marker>
+        <g id="icon-user">
+          <circle cx="12" cy="8" r="5"/>
+          <path d="M3,23 a9,9 0 0 1 18,0"/>
+        </g>
+      </defs>
+
+      <!-- return path -->
+      <path class="dline-soft" d="M 150 1005 H 60 V 60 H 150" marker-end="url(#arrow2)"/>
+      <text class="dlabel" x="18" y="530" transform="rotate(-90 18 530)" text-anchor="middle">respuesta: answer + sources + insufficient_context</text>
+
+      <!-- Usuario -->
+      <rect class="dbox" x="150" y="20" width="610" height="90" rx="12"/>
+      <use href="#icon-user" class="icon" transform="translate(174,32) scale(1.5)"/>
+      <text class="dtitle" x="230" y="55">Usuario</text>
+      <text class="ddesc" x="230" y="76">escribe la pregunta en el chat</text>
+      <rect class="dpill" x="430" y="34" width="310" height="60" rx="10"/>
+      <text class="dquote" x="585" y="60" text-anchor="middle">“¿Qué dice el artículo 4?”</text>
+      <text class="dquote-sm" x="585" y="80" text-anchor="middle">ejemplo real, seguido en todo el diagrama</text>
+
+      <!-- step connectors (badge column) -->
+      <line class="dline" x1="455" y1="110" x2="455" y2="146" marker-end="url(#arrow2)"/>
+
+      <!-- Step 1 -->
+      <circle class="badge-jenaro" cx="110" cy="205" r="23"/>
+      <text class="dbadge" x="110" y="211" text-anchor="middle">1</text>
+      <line class="dline" x1="133" y1="205" x2="150" y2="205" />
+      <rect class="dbox" x="150" y="150" width="610" height="110" rx="12"/>
+      <rect class="stripe-jenaro" x="150" y="150" width="6" height="110" rx="3"/>
+      <text class="dtitle" x="178" y="182">El navegador envía la pregunta</text>
+      <text class="dtech" x="178" y="203">frontend — nginx :8080 → proxy /api/*</text>
+      <text class="ddesc" x="178" y="228">La interfaz de chat (index.html, app.js) manda la pregunta a la API.</text>
+      <line class="dline" x1="455" y1="260" x2="455" y2="296" marker-end="url(#arrow2)"/>
+
+      <!-- Step 2 -->
+      <circle class="badge-jenaro" cx="110" cy="355" r="23"/>
+      <text class="dbadge" x="110" y="361" text-anchor="middle">2</text>
+      <line class="dline" x1="133" y1="355" x2="150" y2="355" />
+      <rect class="dbox" x="150" y="300" width="610" height="110" rx="12"/>
+      <rect class="stripe-jenaro" x="150" y="300" width="6" height="110" rx="3"/>
+      <text class="dtitle" x="178" y="332">Entiende qué se está preguntando</text>
+      <text class="dtech" x="178" y="353">plan_query() — app.py, groq_backend.py</text>
+      <text class="ddesc" x="178" y="378">Un modelo de Groq clasifica: ¿sobre la ley, o charla personal?</text>
+      <line class="dline" x1="455" y1="410" x2="455" y2="446" marker-end="url(#arrow2)"/>
+      <text class="dlabel" x="466" y="432">si es sobre la ley</text>
+      <line class="dline-soft" x1="760" y1="345" x2="800" y2="325" marker-end="url(#arrow2)"/>
+      <text class="dlabel" x="765" y="313" text-anchor="end">si es charla personal</text>
+
+      <!-- Step 3 -->
+      <circle class="badge-juan" cx="110" cy="510" r="23"/>
+      <text class="dbadge" x="110" y="516" text-anchor="middle">3</text>
+      <line class="dline" x1="133" y1="510" x2="150" y2="510" />
+      <rect class="dbox" x="150" y="450" width="610" height="120" rx="12"/>
+      <rect class="stripe-juan" x="150" y="450" width="6" height="120" rx="3"/>
+      <text class="dtitle" x="178" y="482">Busca los artículos más parecidos</text>
+      <text class="dtech" x="178" y="503">retrieve() — etapa2_rag/rag/retrieval.py</text>
+      <text class="ddesc" x="178" y="528">Convierte la pregunta en un vector y busca por similitud en pgvector.</text>
+      <line class="dline-soft" x1="760" y1="485" x2="800" y2="485" marker-end="url(#arrow2)"/>
+      <line class="dline-soft" x1="760" y1="540" x2="800" y2="595" marker-end="url(#arrow2)"/>
+      <line class="dline" x1="455" y1="570" x2="455" y2="606" marker-end="url(#arrow2)"/>
+
+      <!-- Step 4 -->
+      <circle class="badge-juan" cx="110" cy="670" r="23"/>
+      <text class="dbadge" x="110" y="676" text-anchor="middle">4</text>
+      <line class="dline" x1="133" y1="670" x2="150" y2="670" />
+      <rect class="dbox" x="150" y="610" width="610" height="120" rx="12"/>
+      <rect class="stripe-juan" x="150" y="610" width="6" height="120" rx="3"/>
+      <text class="dtitle" x="178" y="642">Redacta la respuesta citando la ley</text>
+      <text class="dtech" x="178" y="663">generate_answer() — chain.py + prompts.py</text>
+      <text class="ddesc" x="178" y="688">Un modelo de Groq escribe la respuesta citando cada [chunk_id] usado.</text>
+      <line class="dline-soft" x1="760" y1="665" x2="800" y2="705" marker-end="url(#arrow2)"/>
+      <line class="dline" x1="455" y1="730" x2="455" y2="766" marker-end="url(#arrow2)"/>
+
+      <!-- Step 5 -->
+      <circle class="badge-jenaro" cx="110" cy="825" r="23"/>
+      <text class="dbadge" x="110" y="831" text-anchor="middle">5</text>
+      <line class="dline" x1="133" y1="825" x2="150" y2="825" />
+      <rect class="dbox" x="150" y="770" width="610" height="110" rx="12"/>
+      <rect class="stripe-jenaro" x="150" y="770" width="6" height="110" rx="3"/>
+      <text class="dtitle" x="178" y="802">Revisa que las citas sean reales</text>
+      <text class="dtech" x="178" y="823">validar_respuesta() — app.py</text>
+      <text class="ddesc" x="178" y="848">Rechaza la respuesta si cita un fragmento inventado o sin respaldo.</text>
+      <line class="dline" x1="455" y1="880" x2="455" y2="916" marker-end="url(#arrow2)"/>
+
+      <!-- Step 6 -->
+      <circle class="badge-jenaro" cx="110" cy="965" r="23"/>
+      <text class="dbadge" x="110" y="971" text-anchor="middle">6</text>
+      <line class="dline" x1="133" y1="965" x2="150" y2="965" />
+      <rect class="dbox" x="150" y="920" width="610" height="90" rx="12"/>
+      <rect class="stripe-jenaro" x="150" y="920" width="6" height="90" rx="3"/>
+      <text class="dtitle" x="178" y="952">El usuario recibe la respuesta</text>
+      <text class="ddesc" x="178" y="974">Texto, artículos citados, y si la ley no alcanza para responder.</text>
+
+      <!-- right lane -->
+      <rect class="dbox-ex" x="800" y="290" width="280" height="80" rx="10"/>
+      <text class="dtitle-c" x="828" y="317">¿Charla personal?</text>
+      <text class="dtech" x="828" y="336">converse() [Groq]</text>
+      <text class="ddesc" x="828" y="357">responde con el historial, sin buscar en la ley</text>
+
+      <rect class="dbox-ex" x="800" y="450" width="280" height="80" rx="10"/>
+      <text class="dtitle-c" x="828" y="477">Mistral API</text>
+      <text class="dtech" x="828" y="496">embeddings · mistral-embed</text>
+      <text class="ddesc" x="828" y="517">convierte texto en un vector de 1024 dimensiones</text>
+
+      <rect class="dbox" x="800" y="565" width="280" height="90" rx="10"/>
+      <ellipse class="icon" cx="840" cy="596" rx="20" ry="7"/>
+      <path class="icon" d="M820,596 V618 a20,7 0 0 0 40,0 V596"/>
+      <path class="icon" d="M820,607 a20,7 0 0 0 40,0"/>
+      <text class="dtitle-c" x="875" y="592">Base de datos</text>
+      <text class="dtech" x="875" y="610">Postgres + pgvector</text>
+      <text class="ddesc" x="875" y="630">140 chunks, distancia coseno</text>
+
+      <rect class="dbox-ex" x="800" y="670" width="280" height="80" rx="10"/>
+      <text class="dtitle-c" x="828" y="697">Groq API</text>
+      <text class="dtech" x="828" y="716">chat/completions · qwen3.6-27b</text>
+      <text class="ddesc" x="828" y="737">clasifica y redacta; 2-3 llamados por turno</text>
+    </svg>
+  </div>
+  <figcaption><b>2 — plan_query()</b> decide con Groq si la pregunta es sobre la ley o charla personal. Si es sobre la ley, <b>3 — retrieve()</b> y <b>4 — generate_answer()</b>  buscan y redactan citando <code>[chunk_id]</code>; <b>5 —</b> Jenaro valida esas citas antes de responder. Mistral y Groq (borde punteado) son las únicas dependencias fuera de los contenedores Docker.</figcaption>
+</section>
+
+<div class="legend">
+  <span class="legend-item"><span class="dot" style="background:var(--pamela)"></span><b>Pamela</b> — Etapa 1, Datos</span>
+  <span class="legend-item"><span class="dot" style="background:var(--juan)"></span><b>Juan</b> — Etapa 2, Motor RAG (retrieval + generación)</span>
+  <span class="legend-item"><span class="dot" style="background:var(--jenaro)"></span><b>Jenaro</b> — Etapa 3, API/sesiones/frontend</span>
+  <span class="legend-item"><span class="dot" style="background:var(--ink-dim)"></span>Infraestructura compartida (BD, PDF, chunks.json)</span>
+  <span class="legend-item"><span class="dot-line"></span>Servicio externo, fuera de Docker</span>
+</div>
+
+<footer class="page">
+  asistente-rag-ley21719 · etapa2_rag/ + etapa3_producto/ · docker compose up -d --build --wait
+</footer>
