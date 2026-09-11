@@ -1,0 +1,705 @@
+{
+  "captured_at_utc": "2026-09-09T22:53:24.179138+00:00",
+  "health": {
+    "status": "ok",
+    "mode": "live",
+    "retrieval": "pgvector_cosine_exact",
+    "generation": "groq",
+    "model": "qwen/qwen3.6-27b",
+    "memory": "in_process",
+    "memory_exchanges": 6,
+    "session_ttl_seconds": 3600,
+    "provider_reachable": "not_checked"
+  },
+  "scope": "Consultas HTTP reales; checks funcionales, no evaluación jurídica exhaustiva. Datos de usuario ficticios.",
+  "passed": 16,
+  "total": 16,
+  "cases": [
+    {
+      "case": "Regresión: pregunta exacta del usuario",
+      "request": {
+        "message": "De qué trata la ley 21.719?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "La Ley N° 21.719 regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales [doc-21719-p1]. Esta ley introduce modificaciones en la Ley N° 19.628, sobre protección de la vida privada [doc-21719-p1]. El objeto de la normativa modificada es regular la forma y condiciones en la cual se efectúa el tratamiento y protección de los datos personales de las personas naturales, conforme al artículo 19, N° 4, de la Constitución Política de la República [art-1].",
+        "conversation_id": "3ce0bcb0c99c45cea8563e334dac953f",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          },
+          {
+            "chunk_id": "art-1",
+            "texto": "\"Artículo 1°.- Objeto y ámbito de aplicación. La presente ley tiene por objeto regular la forma y condiciones en la cual se efectúa el tratamiento y protección de los datos personales de las personas naturales, en conformidad al artículo 19, N° 4, de la Constitución Política de la República.\n\nTodo tratamiento de datos personales que realice una persona natural o jurídica, incluidos los órganos públicos, debe respetar los derechos y libertades de las personas y quedará sujeto a las disposiciones de esta ley.\n\nEl régimen de tratamiento y protección de datos establecido en esta ley no se aplicará al tratamiento de datos que se realice en el ejercicio de las libertades de emitir opinión y de informar reguladas por las leyes a que se refiere el artículo 19, N° 12, de la Constitución Política de la República. Los medios de comunicación social quedarán sujetos a las disposiciones de esta ley en lo relativo al tratamiento de datos que efectúen con una finalidad distinta a la de opinar e informar.\n\nTampoco serán aplicables las normas de la presente ley al tratamiento de datos que efectúen las personas naturales en relación con sus actividades personales.\".",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": "1",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.8291024607099358,
+            "label": "Artículo 1 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "De qué trata la ley 21.719?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 438.61,
+          "retrieval": 632.38,
+          "generation": 780.02,
+          "total": 1854.17
+        }
+      }
+    },
+    {
+      "case": "Relación entre ley fuente y ley modificada",
+      "request": {
+        "message": "¿Por qué aparece la Ley 19.628 si el documento es la Ley 21.719?",
+        "conversation_id": "3ce0bcb0c99c45cea8563e334dac953f",
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "La Ley 21.719 introduce modificaciones en la Ley N° 19.628, sobre protección de la vida privada [nivel1-primero]. Por ello, el documento contiene el texto modificado de dicha ley, específicamente el Artículo 1° que define su objeto y ámbito de aplicación [art-1]. La Ley 21.719 regula la protección y tratamiento de datos personales, actualizando el marco normativo existente [doc-21719-p1].",
+        "conversation_id": "3ce0bcb0c99c45cea8563e334dac953f",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "nivel1-primero",
+            "texto": "\"Artículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.8287810833573425,
+            "label": "Disposición: nivel1-primero",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "art-1",
+            "texto": "\"Artículo 1°.- Objeto y ámbito de aplicación. La presente ley tiene por objeto regular la forma y condiciones en la cual se efectúa el tratamiento y protección de los datos personales de las personas naturales, en conformidad al artículo 19, N° 4, de la Constitución Política de la República.\n\nTodo tratamiento de datos personales que realice una persona natural o jurídica, incluidos los órganos públicos, debe respetar los derechos y libertades de las personas y quedará sujeto a las disposiciones de esta ley.\n\nEl régimen de tratamiento y protección de datos establecido en esta ley no se aplicará al tratamiento de datos que se realice en el ejercicio de las libertades de emitir opinión y de informar reguladas por las leyes a que se refiere el artículo 19, N° 12, de la Constitución Política de la República. Los medios de comunicación social quedarán sujetos a las disposiciones de esta ley en lo relativo al tratamiento de datos que efectúen con una finalidad distinta a la de opinar e informar.\n\nTampoco serán aplicables las normas de la presente ley al tratamiento de datos que efectúen las personas naturales en relación con sus actividades personales.\".",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": "1",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.8045921621482938,
+            "label": "Artículo 1 · Ley 19.628",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Por qué se menciona la Ley 19.628 en el texto de la Ley 21.719?",
+        "turn_count": 2,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 845.03,
+          "retrieval": 377.74,
+          "generation": 657.85,
+          "total": 1881.51
+        }
+      }
+    },
+    {
+      "case": "Resumen general del PDF",
+      "request": {
+        "message": "Resume de qué trata este documento PDF",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El documento corresponde a la Ley N° 21.719, la cual regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales [doc-21719-p1]. Además, introduce modificaciones en la Ley N° 19.628, sobre protección de la vida privada [doc-21719-p1].",
+        "conversation_id": "d30eabd99a1648248b47e6e8cebd0cf2",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "Resume de qué trata este documento PDF",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 497.96,
+          "retrieval": 578.05,
+          "generation": 694.02,
+          "total": 1770.83
+        }
+      }
+    },
+    {
+      "case": "Número de ley sin separador",
+      "request": {
+        "message": "¿Cuál es el objetivo de la ley 21719?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "La Ley N° 21.719 tiene por objeto regular la protección y el tratamiento de los datos personales, así como crear la Agencia de Protección de Datos Personales [doc-21719-p1]. Esta ley introduce modificaciones en la Ley N° 19.628, sobre protección de la vida privada [doc-21719-p1].",
+        "conversation_id": "e8e757b882b54cc983563bdc13259ea7",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Cuál es el objetivo de la ley 21719?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 618.92,
+          "retrieval": 572.66,
+          "generation": 1545.3,
+          "total": 2737.73
+        }
+      }
+    },
+    {
+      "case": "Otra ley no se confunde con el documento",
+      "request": {
+        "message": "¿De qué trata la Ley 99.999?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No hay evidencia suficiente en los fragmentos proporcionados para responder sobre la Ley 99.999. Los datos disponibles se refieren exclusivamente a la Ley 21.719 [doc-21719-p1], la cual regula la protección y tratamiento de datos personales y crea la Agencia de Protección de Datos Personales [doc-21719-p1], modificando la Ley 19.628 [doc-21719-p1].",
+        "conversation_id": "e1071c0fdb44431eae4e87df73277d68",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          }
+        ],
+        "insufficient_context": true,
+        "retrieval_query": "¿De qué trata la Ley 99.999?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 382.99,
+          "retrieval": 580.1,
+          "generation": 685.89,
+          "total": 1649.87
+        }
+      }
+    },
+    {
+      "case": "Presentación",
+      "request": {
+        "message": "Hola, me llamo Felipe",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "Hola Felipe, un gusto saludarte.",
+        "conversation_id": "da60b15fc02f42f68e5529c111e96a42",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": false,
+        "retrieval_query": "Hola, me llamo Felipe",
+        "turn_count": 1,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 969.37,
+          "retrieval": 0.0,
+          "generation": 510.96,
+          "total": 1481.07
+        }
+      }
+    },
+    {
+      "case": "Recuerdo de nombre",
+      "request": {
+        "message": "¿Cómo me llamaba?",
+        "conversation_id": "da60b15fc02f42f68e5529c111e96a42",
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "Te llamas Felipe.",
+        "conversation_id": "da60b15fc02f42f68e5529c111e96a42",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": false,
+        "retrieval_query": "¿Cómo me llamaba?",
+        "turn_count": 2,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 378.41,
+          "retrieval": 0.0,
+          "generation": 310.41,
+          "total": 689.58
+        }
+      }
+    },
+    {
+      "case": "Sesión nueva sin nombre",
+      "request": {
+        "message": "¿Cómo me llamo?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No recuerdo cómo te llamas, ya que no aparece en esta conversación.",
+        "conversation_id": "7f246bc65e1446bd8c4a4146bbc3c963",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Cómo me llamo?",
+        "turn_count": 1,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 463.14,
+          "retrieval": 0.0,
+          "generation": 619.05,
+          "total": 1083.0
+        }
+      }
+    },
+    {
+      "case": "Artículo con cita",
+      "request": {
+        "message": "¿Qué dice el artículo 4?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El artículo 4° establece los derechos del titular de datos, que incluyen acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales [art-4]. Estos derechos son personales, intransferibles e irrenunciables, y no pueden limitarse por ningún acto o convención [art-4]. En caso de fallecimiento del titular, los herederos pueden ejercer estos derechos, salvo que la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley, en cuyo caso no podrán acceder, rectificar ni suprimir los datos [art-4].",
+        "conversation_id": "f2e388fd34784f168fdd9a33a2a66537",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "art-4",
+            "texto": "Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley.",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": "4",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.8014236029029238,
+            "label": "Artículo 4 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 4?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.03,
+          "retrieval": 442.54,
+          "generation": 654.3,
+          "total": 1097.69
+        }
+      }
+    },
+    {
+      "case": "Seguimiento documental",
+      "request": {
+        "message": "¿Y eso cómo funciona?",
+        "conversation_id": "f2e388fd34784f168fdd9a33a2a66537",
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El artículo 4° establece que toda persona puede ejercer sus derechos (acceso, rectificación, supresión, oposición, portabilidad y bloqueo) actuando por sí misma, a través de su representante legal o mandatario, según corresponda [art-4]. En caso de fallecimiento del titular, estos derechos pueden ser ejercidos por sus herederos, con la limitación de que no podrán acceder, rectificar ni suprimir los datos si el causante lo prohibió expresamente o así lo establece una ley [art-4].",
+        "conversation_id": "f2e388fd34784f168fdd9a33a2a66537",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "art-4",
+            "texto": "Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley.",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": "4",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.9048293667907161,
+            "label": "Artículo 4 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Cómo funcionan los derechos de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de datos personales establecidos en el artículo 4?",
+        "turn_count": 2,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 382.51,
+          "retrieval": 600.68,
+          "generation": 647.65,
+          "total": 1631.87
+        }
+      }
+    },
+    {
+      "case": "Artículo inexistente",
+      "request": {
+        "message": "¿Qué dice el artículo 999?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No encontré fragmentos suficientes para responder en el documento y ámbito seleccionados. Prueba indicando un artículo o ampliando la búsqueda.",
+        "conversation_id": "862b4c82356447f5a18eb3bf21dcf76d",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Qué dice el artículo 999?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.03,
+          "retrieval": 801.5,
+          "generation": 0.02,
+          "total": 802.31
+        }
+      }
+    },
+    {
+      "case": "Filtro transitorio",
+      "request": {
+        "message": "¿Qué dice el artículo 4?",
+        "conversation_id": null,
+        "filters": {
+          "ambito": "transitorio"
+        }
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No encontré fragmentos suficientes para responder en el documento y ámbito seleccionados. Prueba indicando un artículo o ampliando la búsqueda.",
+        "conversation_id": "c432be3c687c46dbb3b40e9028c71544",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Qué dice el artículo 4?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.02,
+          "retrieval": 605.76,
+          "generation": 0.02,
+          "total": 606.6
+        }
+      }
+    },
+    {
+      "case": "Búsqueda semántica",
+      "request": {
+        "message": "¿Qué derechos tiene el titular de datos personales?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El titular de datos personales tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales [art-4]. Estos derechos son personales, intransferibles e irrenunciables [art-4]. En caso de fallecimiento, pueden ser ejercidos por los herederos, salvo prohibición expresa del causante [art-4]. Además, si el tratamiento se basa en consentimiento, existe el derecho a retirarlo en cualquier momento [art-14-ter-p2].",
+        "conversation_id": "c02dd2141f944a40aafb0762e246c0d3",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "art-4",
+            "texto": "Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley.",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": "4",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.8755634322242463,
+            "label": "Artículo 4 · Ley 19.628",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "art-14-ter-p2",
+            "texto": "f) El derecho que le asiste al titular para solicitar ante el responsable, acceso, rectificación, supresión, oposición y portabilidad de sus datos personales, de conformidad a la ley.\n\ng) El derecho que le asiste al titular de recurrir ante la Agencia, en caso de que el responsable rechace o no responda oportunamente las solicitudes que le formule.\n\nh) En su caso, la transferencia de datos personales a un tercer país u organización internacional y si éstos ofrecen o no un nivel adecuado de protección. En caso de que no cuenten con un nivel adecuado de protección, se deberá informar si existen garantías que justifiquen tal transferencia.\n\ni) El periodo durante el que se conservarán los datos personales.\n\nj) La fuente de la cual provienen los datos personales y, en su caso, si proceden de fuentes de acceso público.\n\nk) Cuando el tratamiento está basado en el consentimiento del titular, la existencia del derecho a retirarlo en cualquier momento, sin que ello afecte a la licitud del tratamiento basado en el consentimiento previo a su retirada.\n\nl) La existencia de decisiones automatizadas, incluida la elaboración de perfiles. En tales casos, información significativa sobre la lógica aplicada, así como las consecuencias previstas de dicho tratamiento para el titular.",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": "14",
+            "articulo_sufijo": "ter",
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "2/2",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Del tratamiento de los datos personales y de las categorías especiales de datos Párrafo Primero Del consentimiento del titular, de las obligaciones y deberes del responsable y del tratamiento de datos en general",
+            "score": 0.8729394536300075,
+            "label": "Artículo 14 ter · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué derechos tiene el titular de datos personales?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 368.31,
+          "retrieval": 373.26,
+          "generation": 810.09,
+          "total": 1552.5
+        }
+      }
+    },
+    {
+      "case": "Artículo bis",
+      "request": {
+        "message": "¿Qué dice el artículo 1 bis?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El artículo 1° bis de la Ley 19.628 establece el ámbito de aplicación territorial [art-1-bis]. Se aplica cuando el responsable o mandatario están en Chile [art-1-bis], o cuando un mandatario opera para un responsable chileno [art-1-bis]. También aplica si, sin estar en Chile, ofrecen bienes/servicios a titulares chilenos o monitorean su comportamiento [art-1-bis]. Finalmente, se aplica si la legislación nacional resulta aplicable por contrato o derecho internacional [art-1-bis].",
+        "conversation_id": "5a0fb440195c4b11bbec6b608c8afd67",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "art-1-bis",
+            "texto": "\"Artículo 1° bis.- Ámbito de aplicación territorial. Las disposiciones de la presente ley se aplicarán al tratamiento de datos personales que se realice bajo cualquiera de las siguientes circunstancias:\n\na) Cuando el responsable o mandatario estén establecidos o constituidos en el territorio nacional.\n\nb) Cuando el mandatario, con independencia de su lugar de establecimiento o constitución, realice las operaciones de tratamiento de datos personales a nombre de un responsable establecido o constituido en el territorio nacional.\n\nc) Cuando el responsable o mandatario no se encuentren establecidos en el territorio nacional pero sus operaciones de tratamiento de datos personales estén destinadas a ofrecer bienes o servicios a titulares que se encuentren en Chile, independientemente de si a éstos se les requiere un pago, o a monitorear el comportamiento de titulares que se encuentran en el territorio nacional, incluyendo su análisis, rastreo, perfilamiento o predicción de comportamiento.\n\nLa presente ley también se aplicará al tratamiento de datos personales que sea realizado por un responsable al que, sin estar establecido en el territorio nacional, le resulte aplicable la legislación nacional a causa de un contrato o del derecho internacional.\".",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": "1",
+            "articulo_sufijo": "bis",
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.7924056329994451,
+            "label": "Artículo 1 bis · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 1 bis?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.04,
+          "retrieval": 624.9,
+          "generation": 696.98,
+          "total": 1322.79
+        }
+      }
+    },
+    {
+      "case": "Transitorios con resultados",
+      "request": {
+        "message": "¿Cuándo entra en vigencia la ley según sus disposiciones transitorias?",
+        "conversation_id": null,
+        "filters": {
+          "ambito": "transitorio"
+        }
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "Según la disposición transitoria primera, las modificaciones a las leyes N° 19.628, N° 20.285 y N° 19.496 entrarán en vigencia el día primero del mes vigésimo cuarto posterior a la publicación de la ley en el Diario Oficial [transitorio-primero].",
+        "conversation_id": "7998d2a5e45c48e7ad5408f5e789308b",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "transitorio-primero",
+            "texto": "Artículo primero.- Las modificaciones a las leyes N° 19.628, sobre protección de la vida privada; N° 20.285, sobre acceso a la información pública, y N° 19.496, que establece normas sobre protección de los derechos de los consumidores, contenidas en los artículos primero, segundo y tercero permanentes de la presente ley, respectivamente, entrarán en vigencia el día primero del mes vigésimo cuarto posterior a la publicación de esta ley en el Diario Oficial.",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "transitorio",
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.8406138140729253,
+            "label": "Disposición transitoria: primero",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Cuándo entra en vigencia la ley según sus disposiciones transitorias?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 473.49,
+          "retrieval": 618.75,
+          "generation": 544.97,
+          "total": 1638.12
+        }
+      }
+    },
+    {
+      "case": "Fuera de tema",
+      "request": {
+        "message": "¿Cómo preparo una pizza margarita?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No hay evidencia suficiente en los fragmentos proporcionados para responder a esta pregunta. Los textos se refieren exclusivamente a la Ley 21.719 y sus modificaciones a la Ley 19.628 sobre protección de datos personales [doc-21719-p1].",
+        "conversation_id": "5b3e56a27eb24b21b10c18750a84c6d4",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          }
+        ],
+        "insufficient_context": true,
+        "retrieval_query": "¿Cómo preparo una pizza margarita?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 397.04,
+          "retrieval": 621.5,
+          "generation": 688.06,
+          "total": 1707.44
+        }
+      }
+    }
+  ]
+}

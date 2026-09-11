@@ -1,0 +1,11 @@
+{
+  "captured_at_utc": "2026-09-09T16:36:07.121363+00:00",
+  "corpus_sha256": "7510ffff94c7b63e46cfa29691ec6cfe0825fb0ed18393abb1797caf3dea7390",
+  "expected_rows": 140,
+  "database_rows": 140,
+  "matching_ids": true,
+  "exact_text_and_metadata_rows": 140,
+  "valid_1024d_vectors": 140,
+  "external_calls": 0,
+  "passed": true
+}

@@ -1,0 +1,9 @@
+fastapi==0.141.1
+uvicorn==0.52.4
+langchain-core==1.6.2
+langchain-openai==1.6.1
+python-dotenv==1.2.3
+psycopg[binary]==3.3.3
+pgvector==0.3.2
+numpy==2.5.3
+requests==2.34.2

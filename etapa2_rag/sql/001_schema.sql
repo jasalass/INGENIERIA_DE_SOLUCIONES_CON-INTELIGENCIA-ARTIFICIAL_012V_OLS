@@ -30,14 +30,19 @@ CREATE TABLE IF NOT EXISTS chunks (
     embedding           vector(1024) NOT NULL
 );
 
--- Con 140 chunks, un sequential scan ya es rapido (no hace falta un
--- indice aproximado). Se agrega igual un indice ivfflat para dejar el
--- patron correcto documentado si el corpus crece (ej. se agregan
--- reglamentos u otras leyes). lists=10 es razonable para un corpus
--- chico -- valores muy altos con pocas filas degradan la calidad del
--- indice en vez de mejorarla.
-CREATE INDEX IF NOT EXISTS chunks_embedding_idx
-    ON chunks USING ivfflat (embedding vector_cosine_ops) WITH (lists = 10);
+-- Con 140 chunks, un sequential scan ya es rapido y exacto -- NO se crea
+-- indice ivfflat (aproximado) todavia a proposito: un ANN index sobre un
+-- corpus tan chico da "low recall" (advertencia real de Postgres al
+-- crearlo) y ademas antes obligaba a forzar `enable_indexscan = off` en
+-- cada consulta para lograr ranking exacto, lo que de paso apagaba los
+-- indices btree de abajo (articulo/titulo_numero/ambito). Sin el ivfflat,
+-- el ranking por coseno ya es exacto por diseño y los btree de metadatos
+-- siguen disponibles para los filtros. Reactivar esta linea (y ajustar
+-- `lists`, tipicamente sqrt(N filas)) solo si el corpus crece lo
+-- suficiente (ej. se agregan reglamentos u otras leyes) como para que el
+-- sequential scan del vector se vuelva un cuello de botella real.
+-- CREATE INDEX IF NOT EXISTS chunks_embedding_idx
+--     ON chunks USING ivfflat (embedding vector_cosine_ops) WITH (lists = 10);
 
 -- Indices para los filtros de metadatos que usa rag/retrieval.py
 -- (busqueda acotada por articulo, titulo o ambito antes de rankear por

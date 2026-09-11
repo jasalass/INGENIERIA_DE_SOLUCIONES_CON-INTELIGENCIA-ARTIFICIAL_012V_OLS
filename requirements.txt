@@ -1,10 +1,5 @@
 pymupdf==1.28.2
 
-# Etapa 2 - Motor RAG (pgvector + LangChain)
-psycopg[binary]==3.3.3
-pgvector==0.3.2
-langchain==1.3.16
-langchain-openai==1.6.0
-langchain-core==1.6.0
-requests
-python-dotenv
+# Dependencias compartidas etapa 2 + 3, sin versiones LangChain contradictorias.
+# Se usan langchain_core y langchain_openai; no se importa el paquete langchain.
+-r etapa3_producto/requirements.txt

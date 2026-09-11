@@ -1,0 +1,152 @@
+{
+  "captured_at_utc": "2026-09-09T01:09:26.168687+00:00",
+  "health": {
+    "status": "ok",
+    "mode": "groq",
+    "retrieval": "lexical",
+    "generation": "groq",
+    "model": "qwen/qwen3.6-27b",
+    "memory": "in_process",
+    "memory_exchanges": 6,
+    "session_ttl_seconds": 3600,
+    "provider_reachable": "not_checked"
+  },
+  "scope": "Consultas HTTP reales; checks funcionales, no evaluación jurídica exhaustiva. Datos de usuario ficticios.",
+  "passed": 4,
+  "total": 5,
+  "cases": [
+    {
+      "case": "Presentación",
+      "request": {
+        "message": "Hola, me llamo Felipe",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "Hola Felipe, un gusto saludarte.",
+        "conversation_id": "49f1a40a27654c8498ffaeb454d4cc01",
+        "mode": "groq",
+        "sources": [],
+        "insufficient_context": false,
+        "retrieval_query": "Hola, me llamo Felipe",
+        "turn_count": 1,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 709.1,
+          "retrieval": 0.0,
+          "generation": 782.11,
+          "total": 1587.99
+        }
+      }
+    },
+    {
+      "case": "Recuerdo de nombre",
+      "request": {
+        "message": "¿Cómo me llamaba?",
+        "conversation_id": "49f1a40a27654c8498ffaeb454d4cc01",
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "Te llamas Felipe.",
+        "conversation_id": "49f1a40a27654c8498ffaeb454d4cc01",
+        "mode": "groq",
+        "sources": [],
+        "insufficient_context": false,
+        "retrieval_query": "¿Cómo me llamaba?",
+        "turn_count": 2,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 450.21,
+          "retrieval": 0.0,
+          "generation": 423.2,
+          "total": 874.22
+        }
+      }
+    },
+    {
+      "case": "Sesión nueva sin nombre",
+      "request": {
+        "message": "¿Cómo me llamo?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No recuerdo tu nombre, ya que no aparece en esta conversación.",
+        "conversation_id": "1317f69fb58f47e0969334ad35014466",
+        "mode": "groq",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Cómo me llamo?",
+        "turn_count": 1,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 310.32,
+          "retrieval": 0.0,
+          "generation": 359.82,
+          "total": 670.98
+        }
+      }
+    },
+    {
+      "case": "Artículo con cita",
+      "request": {
+        "message": "¿Qué dice el artículo 4?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El artículo 4° establece los derechos del titular de datos, los cuales incluyen el derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales [art-4]. Estos derechos son personales, intransferibles e irrenunciables, y no pueden limitarse por ningún acto o convención [art-4]. En caso de fallecimiento del titular, los derechos pueden ser ejercidos por sus herederos, con la excepción de que estos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, si la persona fallecida lo hubiera prohibido expresamente o así lo estableciera una ley [art-4].",
+        "conversation_id": "5f606dd21017470e9c0f6099e17ceac4",
+        "mode": "groq",
+        "sources": [
+          {
+            "chunk_id": "art-4",
+            "texto": "Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley.",
+            "articulo": "4",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.0,
+            "label": "Artículo 4 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 4?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.03,
+          "retrieval": 0.67,
+          "generation": 716.73,
+          "total": 718.14
+        }
+      }
+    },
+    {
+      "case": "Seguimiento documental",
+      "request": {
+        "message": "¿Y eso cómo funciona?",
+        "conversation_id": "5f606dd21017470e9c0f6099e17ceac4",
+        "filters": {}
+      },
+      "status": 503,
+      "passed": false,
+      "response": {
+        "detail": "No se pudo completar la consulta. Intenta nuevamente; no se guardó este turno."
+      }
+    }
+  ]
+}

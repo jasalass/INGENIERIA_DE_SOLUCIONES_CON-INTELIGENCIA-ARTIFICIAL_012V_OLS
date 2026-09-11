@@ -23,6 +23,7 @@ OpenAI (POST /embeddings con {"model", "input"}).
 """
 
 import os
+import math
 
 import requests
 
@@ -32,7 +33,23 @@ MISTRAL_BASE_URL = os.getenv("MISTRAL_BASE_URL", "https://api.mistral.ai/v1")
 MISTRAL_EMBED_MODEL = os.getenv("MISTRAL_EMBED_MODEL", "mistral-embed")
 
 
+class EmbeddingProviderError(RuntimeError):
+    provider = "Mistral"
+
+    def __init__(self, status_code):
+        self.status_code = status_code
+        super().__init__("No se pudo obtener el embedding de Mistral")
+
+
 def _post_embeddings(texts: list[str]) -> list[list[float]]:
+    if not texts or any(not text.strip() for text in texts):
+        raise ValueError("Textos vacíos para embeddings")
+    # No se rechaza aqui un MISTRAL_BASE_URL/MODEL distinto del default --eso
+    # bloqueaba probar contra un endpoint propio/mock, contradiciendo que
+    # ambos se leen como variables de entorno configurables (arriba). La
+    # protección real del índice de 1024 dimensiones es la validación de
+    # `EMBEDDING_DIM` más abajo, que rechaza cualquier vector que no calce,
+    # sea cual sea el proveedor/modelo configurado.
     response = requests.post(
         f"{MISTRAL_BASE_URL}/embeddings",
         headers={
@@ -40,14 +57,20 @@ def _post_embeddings(texts: list[str]) -> list[list[float]]:
             "Authorization": f"Bearer {os.environ['MISTRAL_API_KEY']}",
         },
         json={"model": MISTRAL_EMBED_MODEL, "input": texts},
-        timeout=30,
+        timeout=(5, 15),
     )
-    response.raise_for_status()
+    if not response.ok:
+        raise EmbeddingProviderError(response.status_code)
     data = response.json()["data"]
     # La API devuelve los embeddings en el mismo orden que `texts`, pero
     # se ordena explicito por "index" para no depender de esa garantia.
     data.sort(key=lambda item: item["index"])
-    return [item["embedding"] for item in data]
+    if [item["index"] for item in data] != list(range(len(texts))):
+        raise ValueError("Cantidad/orden inválido de embeddings")
+    vectors = [item["embedding"] for item in data]
+    if any(len(v) != EMBEDDING_DIM or not all(isinstance(x, (int, float)) and math.isfinite(x) for x in v) or not any(v) for v in vectors):
+        raise ValueError("Embedding inválido: se requieren 1024 valores finitos no nulos")
+    return vectors
 
 
 def embed_documents(texts: list[str]) -> list[list[float]]:

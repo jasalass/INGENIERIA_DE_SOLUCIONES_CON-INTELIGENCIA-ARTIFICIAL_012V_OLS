@@ -1,0 +1,502 @@
+{
+  "captured_at_utc": "2026-09-09T00:55:04.209395+00:00",
+  "base_url": "http://127.0.0.1:8080",
+  "scope": "Demo local: sin LLM, embeddings ni pgvector. No demuestra precisión jurídica ni retrieval semántico.",
+  "health": {
+    "status": "ok",
+    "mode": "demo",
+    "retrieval": "lexical_demo",
+    "generation": "literal_excerpts",
+    "model": null,
+    "memory": "in_process",
+    "memory_exchanges": 6,
+    "session_ttl_seconds": 3600,
+    "provider_reachable": "not_checked"
+  },
+  "passed": 11,
+  "total": 11,
+  "cases": [
+    {
+      "name": "Derechos",
+      "request": {
+        "message": "¿Qué dice el artículo 4?",
+        "filters": {}
+      },
+      "passed": true,
+      "response": {
+        "answer": "Demostración: estos son extractos literales seleccionados por coincidencia de palabras. No se ha generado una respuesta con IA.\n\nArtículo 4 · Ley 19.628 [art-4]\n«Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la…»",
+        "conversation_id": "c8cb11519e2143af91f0e662d82e4a12",
+        "mode": "demo",
+        "sources": [
+          {
+            "chunk_id": "art-4",
+            "texto": "Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley.",
+            "articulo": "4",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.0,
+            "label": "Artículo 4 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 4?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 0.58,
+          "generation": 0.02,
+          "total": 11.52
+        }
+      }
+    },
+    {
+      "name": "Seguimiento conversacional",
+      "passed": true,
+      "response": {
+        "answer": "Demostración: estos son extractos literales seleccionados por coincidencia de palabras. No se ha generado una respuesta con IA.\n\nArtículo 4 · Ley 19.628 [art-4]\n«Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la…»",
+        "conversation_id": "c8cb11519e2143af91f0e662d82e4a12",
+        "mode": "demo",
+        "sources": [
+          {
+            "chunk_id": "art-4",
+            "texto": "Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley.",
+            "articulo": "4",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.0,
+            "label": "Artículo 4 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 4?\nSeguimiento: ¿Y eso cómo funciona?",
+        "turn_count": 2,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 0.41,
+          "generation": 0.02,
+          "total": 1.21
+        }
+      }
+    },
+    {
+      "name": "Ámbito territorial",
+      "request": {
+        "message": "¿Qué dice el artículo 1 bis?",
+        "filters": {}
+      },
+      "passed": true,
+      "response": {
+        "answer": "Demostración: estos son extractos literales seleccionados por coincidencia de palabras. No se ha generado una respuesta con IA.\n\nArtículo 1 bis · Ley 19.628 [art-1-bis]\n«\"Artículo 1° bis.- Ámbito de aplicación territorial. Las disposiciones de la presente ley se aplicarán al tratamiento de datos personales que se realice bajo cualquiera de las siguientes circunstancias:\n\na) Cuando el responsable o mandatario estén establecidos o constituidos en el territorio nacional.\n\nb) Cuando el mandatario, con independencia de su lugar de establecimiento o constitución, realice las operaciones de tratamiento de datos personales a nombre de un responsable establecido o constituido en el territorio nacional.\n\nc) Cuando el responsable o mandatario no se encuentren establecidos en el territorio nacional pero sus operaciones d…»",
+        "conversation_id": "46c7393790984002a20ca5382c5babd2",
+        "mode": "demo",
+        "sources": [
+          {
+            "chunk_id": "art-1-bis",
+            "texto": "\"Artículo 1° bis.- Ámbito de aplicación territorial. Las disposiciones de la presente ley se aplicarán al tratamiento de datos personales que se realice bajo cualquiera de las siguientes circunstancias:\n\na) Cuando el responsable o mandatario estén establecidos o constituidos en el territorio nacional.\n\nb) Cuando el mandatario, con independencia de su lugar de establecimiento o constitución, realice las operaciones de tratamiento de datos personales a nombre de un responsable establecido o constituido en el territorio nacional.\n\nc) Cuando el responsable o mandatario no se encuentren establecidos en el territorio nacional pero sus operaciones de tratamiento de datos personales estén destinadas a ofrecer bienes o servicios a titulares que se encuentren en Chile, independientemente de si a éstos se les requiere un pago, o a monitorear el comportamiento de titulares que se encuentran en el territorio nacional, incluyendo su análisis, rastreo, perfilamiento o predicción de comportamiento.\n\nLa presente ley también se aplicará al tratamiento de datos personales que sea realizado por un responsable al que, sin estar establecido en el territorio nacional, le resulte aplicable la legislación nacional a causa de un contrato o del derecho internacional.\".",
+            "articulo": "1",
+            "articulo_sufijo": "bis",
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 1.0,
+            "label": "Artículo 1 bis · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 1 bis?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 0.45,
+          "generation": 0.02,
+          "total": 1.1
+        }
+      }
+    },
+    {
+      "name": "Artículo inexistente",
+      "request": {
+        "message": "¿Qué dice el artículo 999?",
+        "filters": {}
+      },
+      "passed": true,
+      "response": {
+        "answer": "No encontré fragmentos para esta consulta en la búsqueda de demostración. Prueba indicando un artículo o reformulando la pregunta. Esto no demuestra que la ley no trate el tema.",
+        "conversation_id": "4c6f8b1384054fdcbc94b6f45927dd4a",
+        "mode": "demo",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Qué dice el artículo 999?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 0.26,
+          "generation": 0.02,
+          "total": 0.87
+        }
+      }
+    },
+    {
+      "name": "Fuera del tema",
+      "request": {
+        "message": "Receta pizza margarita",
+        "filters": {}
+      },
+      "passed": true,
+      "response": {
+        "answer": "No encontré fragmentos para esta consulta en la búsqueda de demostración. Prueba indicando un artículo o reformulando la pregunta. Esto no demuestra que la ley no trate el tema.",
+        "conversation_id": "a616cb9dcebb40d7b0390c881a928b02",
+        "mode": "demo",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "Receta pizza margarita",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 17.47,
+          "generation": 0.02,
+          "total": 18.29
+        }
+      }
+    },
+    {
+      "name": "Transitorios",
+      "request": {
+        "message": "¿Qué establecen las disposiciones transitorias?",
+        "filters": {
+          "ambito": "transitorio"
+        }
+      },
+      "passed": true,
+      "response": {
+        "answer": "Demostración: estos son extractos literales seleccionados por coincidencia de palabras. No se ha generado una respuesta con IA.\n\nDisposición transitoria: cuarto [transitorio-cuarto-p1]\n«Artículo cuarto.- La primera designación de los consejeros del Consejo Directivo de la Agencia de Protección de Datos Personales se hará seis meses antes de la entrada en vigencia de la presente ley. El Presidente y el Vicepresidente del Consejo Directivo deberán nombrarse en la primera sesión que el Consejo celebre.\n\nEn la propuesta que se haga al Senado para la primera designación, se identificará a un consejero que durará dos años en su cargo, a un consejero que durará cuatro años en su cargo y a un consejero que durará seis años en su cargo. La mencionada propuesta se hará en un solo acto, en el período comprendido entre los 80 y los 60 d…»\n\nDisposición transitoria: cuarto [transitorio-cuarto-p2]\n«En la propuesta que se haga al Senado para la primera designación, se identificará a un consejero que durará dos años en su cargo, a un consejero que durará cuatro años en su cargo y a un consejero que durará seis años en su cargo. La mencionada propuesta se hará en un solo acto, en el período comprendido entre los 80 y los 60 días anteriores al plazo establecido en el inciso primero de este artículo. El Senado deberá pronunciarse respecto de la propuesta como una unidad. En caso de que el Senado no se pronuncie sobre la propuesta del Presidente de la República antes del vencimiento del plazo señalado en el inciso primero, dicha propuesta se …»\n\nDisposición transitoria: cuarto [transitorio-cuarto-p3]\n«Sin perjuicio de la dictación del decreto supremo que formalice el acuerdo del Senado, o del que deje constancia de la aprobación de la propuesta del Presidente de la República por omisión de pronunciamiento del Senado, los consejeros se entenderán nombrados desde la adopción del acuerdo del Senado o desde el vencimiento del plazo al que se refiere el inciso anterior. Mientras la presente ley no entre en vigencia, el Consejo sólo podrá ejercer las funciones que establecen los literales a), b), g) y h) del artículo 30 bis, y las que establece el artículo 30 ter, ambos del artículo primero, sin perjuicio de que cualquier instrucción o norma gen…»",
+        "conversation_id": "12055ef388dc4f15b34d0bc63712c83f",
+        "mode": "demo",
+        "sources": [
+          {
+            "chunk_id": "transitorio-cuarto-p1",
+            "texto": "Artículo cuarto.- La primera designación de los consejeros del Consejo Directivo de la Agencia de Protección de Datos Personales se hará seis meses antes de la entrada en vigencia de la presente ley. El Presidente y el Vicepresidente del Consejo Directivo deberán nombrarse en la primera sesión que el Consejo celebre.\n\nEn la propuesta que se haga al Senado para la primera designación, se identificará a un consejero que durará dos años en su cargo, a un consejero que durará cuatro años en su cargo y a un consejero que durará seis años en su cargo. La mencionada propuesta se hará en un solo acto, en el período comprendido entre los 80 y los 60 días anteriores al plazo establecido en el inciso primero de este artículo. El Senado deberá pronunciarse respecto de la propuesta como una unidad. En caso de que el Senado no se pronuncie sobre la propuesta del Presidente de la República antes del vencimiento del plazo señalado en el inciso primero, dicha propuesta se entenderá aceptada sin más trámite.",
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": "cuarto",
+            "ambito": "transitorio",
+            "ley_referenciada": null,
+            "parte": "1/3",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 1.0,
+            "label": "Disposición transitoria: cuarto",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "transitorio-cuarto-p2",
+            "texto": "En la propuesta que se haga al Senado para la primera designación, se identificará a un consejero que durará dos años en su cargo, a un consejero que durará cuatro años en su cargo y a un consejero que durará seis años en su cargo. La mencionada propuesta se hará en un solo acto, en el período comprendido entre los 80 y los 60 días anteriores al plazo establecido en el inciso primero de este artículo. El Senado deberá pronunciarse respecto de la propuesta como una unidad. En caso de que el Senado no se pronuncie sobre la propuesta del Presidente de la República antes del vencimiento del plazo señalado en el inciso primero, dicha propuesta se entenderá aceptada sin más trámite.\n\nSin perjuicio de la dictación del decreto supremo que formalice el acuerdo del Senado, o del que deje constancia de la aprobación de la propuesta del Presidente de la República por omisión de pronunciamiento del Senado, los consejeros se entenderán nombrados desde la adopción del acuerdo del Senado o desde el vencimiento del plazo al que se refiere el inciso anterior. Mientras la presente ley no entre en vigencia, el Consejo sólo podrá ejercer las funciones que establecen los literales a), b), g) y h) del artículo 30 bis, y las que establece el artículo 30 ter, ambos del artículo primero, sin perjuicio de que cualquier instrucción o norma general que dicte sólo tendrá fuerza obligatoria a partir de la entrada en vigencia de la presente ley.",
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": "cuarto",
+            "ambito": "transitorio",
+            "ley_referenciada": null,
+            "parte": "2/3",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 1.0,
+            "label": "Disposición transitoria: cuarto",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "transitorio-cuarto-p3",
+            "texto": "Sin perjuicio de la dictación del decreto supremo que formalice el acuerdo del Senado, o del que deje constancia de la aprobación de la propuesta del Presidente de la República por omisión de pronunciamiento del Senado, los consejeros se entenderán nombrados desde la adopción del acuerdo del Senado o desde el vencimiento del plazo al que se refiere el inciso anterior. Mientras la presente ley no entre en vigencia, el Consejo sólo podrá ejercer las funciones que establecen los literales a), b), g) y h) del artículo 30 bis, y las que establece el artículo 30 ter, ambos del artículo primero, sin perjuicio de que cualquier instrucción o norma general que dicte sólo tendrá fuerza obligatoria a partir de la entrada en vigencia de la presente ley.\n\nLos estatutos de la Agencia deberán ser propuestos al Presidente de la República, de conformidad al artículo 30 octies de la presente ley, dentro de los noventa días corridos siguientes a su nombramiento.\n\nNo podrán ser designados como miembros del primer Consejo Directivo de la Agencia de Protección de Datos Personales los integrantes de la comisión asesora ministerial denominada \"Comisión Asesora Ministerial para la implementación de la nueva ley de Protección de Datos Personales\", creada por el decreto N° 12, de 2025, del Ministerio Secretaría General de la Presidencia.",
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": "cuarto",
+            "ambito": "transitorio",
+            "ley_referenciada": null,
+            "parte": "3/3",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 1.0,
+            "label": "Disposición transitoria: cuarto",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué establecen las disposiciones transitorias?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 1.18,
+          "generation": 0.02,
+          "total": 1.82
+        }
+      }
+    },
+    {
+      "name": "Consentimiento",
+      "request": {
+        "message": "¿Qué dice el artículo 11?",
+        "filters": {}
+      },
+      "passed": true,
+      "response": {
+        "answer": "Demostración: estos son extractos literales seleccionados por coincidencia de palabras. No se ha generado una respuesta con IA.\n\nArtículo 11 · Ley 19.628 [art-11-p1]\n«Artículo 11.- Procedimiento ante el responsable de datos. Para ejercer los derechos que le reconoce esta ley, el titular deberá presentar una solicitud o requerimiento escrito ante el responsable, dirigido a la dirección de correo electrónico establecida para este fin, un formulario de contacto o un medio electrónico equivalente. La solicitud deberá contener, a lo menos, las siguientes menciones:\n\na) Individualización del titular y de su representante legal o mandatario, según corresponda, y autenticación de su identidad de acuerdo con los procedimientos, formas y modalidades que establezca la Agencia.\n\nb) Indicación de un domicilio o una dir…»\n\nArtículo 11 · Ley 19.628 [art-11-p2]\n«c) Identificación de los datos personales o del tratamiento determinado, respecto de los cuales se ejerce el derecho correspondiente.\n\nd) En las solicitudes de rectificación, el titular deberá indicar las modificaciones o actualizaciones precisas a realizar y acompañar, en su caso, los antecedentes que las sustenten. Cuando se trate de solicitudes de supresión, el titular deberá indicar la causal invocada y acompañar los antecedentes que la sustenten, si correspondiere. Para las solicitudes de oposición, el titular deberá indicar la causal invocada y en el caso de la letra a) del artículo 8°, deberá fundamentar brevemente su petición y podrá,…»\n\nArtículo 11 · Ley 19.628 [art-11-p3]\n«El responsable deberá responder por escrito al titular a su domicilio o la dirección de correo electrónico fijada por éste. El responsable debe almacenar los respaldos que le permitan demostrar la remisión de la respuesta a la dirección física o electrónica que corresponda, su fecha y el contenido íntegro de ella.\n\nEn caso de denegación total o parcial de la solicitud, el responsable deberá fundar su decisión indicando la causa invocada y los antecedentes que la justifican. En esta misma oportunidad el responsable debe señalar al titular que dispone de un plazo de treinta días hábiles para formular una reclamación ante la Agencia, de acuerdo …»",
+        "conversation_id": "51c0f605e51e495180f9ad9d26809c90",
+        "mode": "demo",
+        "sources": [
+          {
+            "chunk_id": "art-11-p1",
+            "texto": "Artículo 11.- Procedimiento ante el responsable de datos. Para ejercer los derechos que le reconoce esta ley, el titular deberá presentar una solicitud o requerimiento escrito ante el responsable, dirigido a la dirección de correo electrónico establecida para este fin, un formulario de contacto o un medio electrónico equivalente. La solicitud deberá contener, a lo menos, las siguientes menciones:\n\na) Individualización del titular y de su representante legal o mandatario, según corresponda, y autenticación de su identidad de acuerdo con los procedimientos, formas y modalidades que establezca la Agencia.\n\nb) Indicación de un domicilio o una dirección de correo electrónico o de otro medio equivalente para comunicar la respuesta.\n\nc) Identificación de los datos personales o del tratamiento determinado, respecto de los cuales se ejerce el derecho correspondiente.",
+            "articulo": "11",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/4",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.0,
+            "label": "Artículo 11 · Ley 19.628",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "art-11-p2",
+            "texto": "c) Identificación de los datos personales o del tratamiento determinado, respecto de los cuales se ejerce el derecho correspondiente.\n\nd) En las solicitudes de rectificación, el titular deberá indicar las modificaciones o actualizaciones precisas a realizar y acompañar, en su caso, los antecedentes que las sustenten. Cuando se trate de solicitudes de supresión, el titular deberá indicar la causal invocada y acompañar los antecedentes que la sustenten, si correspondiere. Para las solicitudes de oposición, el titular deberá indicar la causal invocada y en el caso de la letra a) del artículo 8°, deberá fundamentar brevemente su petición y podrá, igualmente, acompañar los antecedentes que estime procedentes. En el caso del derecho de acceso, bastará con la individualización del titular.\n\nRecibida la solicitud el responsable deberá acusar recibo de ella y pronunciarse a más tardar dentro de los treinta días corridos siguientes a la fecha de ingreso de la solicitud. Este plazo podrá ser prorrogado, por una sola vez, hasta por treinta días corridos.\n\nEl responsable deberá responder por escrito al titular a su domicilio o la dirección de correo electrónico fijada por éste. El responsable debe almacenar los respaldos que le permitan demostrar la remisión de la respuesta a la dirección física o electrónica que corresponda, su fecha y el contenido íntegro de ella.",
+            "articulo": "11",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "2/4",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.0,
+            "label": "Artículo 11 · Ley 19.628",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "art-11-p3",
+            "texto": "El responsable deberá responder por escrito al titular a su domicilio o la dirección de correo electrónico fijada por éste. El responsable debe almacenar los respaldos que le permitan demostrar la remisión de la respuesta a la dirección física o electrónica que corresponda, su fecha y el contenido íntegro de ella.\n\nEn caso de denegación total o parcial de la solicitud, el responsable deberá fundar su decisión indicando la causa invocada y los antecedentes que la justifican. En esta misma oportunidad el responsable debe señalar al titular que dispone de un plazo de treinta días hábiles para formular una reclamación ante la Agencia, de acuerdo con el procedimiento establecido en el artículo 41.\n\nTranscurrido el plazo al que hace referencia el inciso segundo anterior, sin que haya respuesta del responsable, el titular podrá formular directamente una reclamación ante la Agencia, en los mismos términos del inciso anterior.\n\nCuando se formule una solicitud de rectificación, supresión u oposición, el titular tendrá derecho a solicitar y obtener del responsable el bloqueo temporal de sus datos o del tratamiento que realice, según corresponda.",
+            "articulo": "11",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "3/4",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.0,
+            "label": "Artículo 11 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 11?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 0.85,
+          "generation": 0.03,
+          "total": 1.46
+        }
+      }
+    },
+    {
+      "name": "Portabilidad",
+      "request": {
+        "message": "¿Qué dice el artículo 9?",
+        "filters": {}
+      },
+      "passed": true,
+      "response": {
+        "answer": "Demostración: estos son extractos literales seleccionados por coincidencia de palabras. No se ha generado una respuesta con IA.\n\nArtículo 9 · Ley 19.628 [art-9]\n«Artículo 9°.- Derecho a la portabilidad de los datos personales. El titular de datos tiene derecho a solicitar y recibir una copia de los datos personales que le conciernen, que haya facilitado al responsable, en un formato electrónico estructurado, genérico y de uso común, que permita ser operado por distintos sistemas, y a comunicarlos o transferirlos a otro responsable de datos, cuando concurran las siguientes circunstancias:\n\na) El tratamiento se realice en forma automatizada, y\n\nb) El tratamiento esté basado en el consentimiento del titular.\n\nEl responsable debe utilizar los medios más expeditos, menos onerosos y sin poner trabas u obstá…»",
+        "conversation_id": "9d696a8b97604d2d9ca2eafe469e8882",
+        "mode": "demo",
+        "sources": [
+          {
+            "chunk_id": "art-9",
+            "texto": "Artículo 9°.- Derecho a la portabilidad de los datos personales. El titular de datos tiene derecho a solicitar y recibir una copia de los datos personales que le conciernen, que haya facilitado al responsable, en un formato electrónico estructurado, genérico y de uso común, que permita ser operado por distintos sistemas, y a comunicarlos o transferirlos a otro responsable de datos, cuando concurran las siguientes circunstancias:\n\na) El tratamiento se realice en forma automatizada, y\n\nb) El tratamiento esté basado en el consentimiento del titular.\n\nEl responsable debe utilizar los medios más expeditos, menos onerosos y sin poner trabas u obstáculos para el ejercicio de este derecho.\n\nEl responsable también debe comunicar al titular de manera clara y precisa las medidas necesarias para obtener sus datos personales y especificar las características técnicas para llevar a cabo estas operaciones.\n\nEl titular tendrá derecho a que sus datos personales se transmitan directamente de responsable a responsable cuando sea técnicamente posible.\n\nCon todo, el ejercicio del derecho de portabilidad no supondrá la supresión de los datos ante el responsable cedente, a menos que el titular de ellos así lo pida conjuntamente en la solicitud.",
+            "articulo": "9",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.0,
+            "label": "Artículo 9 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 9?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 0.5,
+          "generation": 0.05,
+          "total": 1.25
+        }
+      }
+    },
+    {
+      "name": "Principios",
+      "request": {
+        "message": "¿Qué dice el artículo 3?",
+        "filters": {}
+      },
+      "passed": true,
+      "response": {
+        "answer": "Demostración: estos son extractos literales seleccionados por coincidencia de palabras. No se ha generado una respuesta con IA.\n\nArtículo 3 · Ley 19.628 [art-3-p1]\n«\"Artículo 3°.- Principios. El tratamiento de los datos personales se rige por los siguientes principios:\n\na) Principios de licitud y lealtad. Los datos personales sólo pueden tratarse de manera lícita y leal.\n\nEl responsable deberá ser capaz de acreditar la licitud del tratamiento de datos personales que realiza.\n\nb) Principio de finalidad. Los datos personales deben ser recolectados con fines específicos, explícitos y lícitos. El tratamiento de los datos personales debe limitarse al cumplimiento de estos fines.\n\nEn aplicación de este principio, no se pueden tratar los datos personales con fines distintos a los informados al momento de la rec…»\n\nArtículo 3 · Ley 19.628 [art-3-p2]\n«c) Principio de proporcionalidad. Los datos personales que se traten deben limitarse estrictamente a aquéllos que resulten necesarios, adecuados y pertinentes en relación con los fines del tratamiento.\n\nLos datos personales pueden ser conservados sólo por el período de tiempo que sea necesario para cumplir con los fines del tratamiento, luego de lo cual deben ser suprimidos o anonimizados, sin perjuicio de las excepciones que establezca la ley. Un período de tiempo mayor requiere autorización legal o consentimiento del titular.\n\nd) Principio de calidad. Los datos personales deben ser exactos, completos, actuales y pertinentes en relación con …»\n\nArtículo 3 · Ley 19.628 [art-3-p3]\n«f) Principio de seguridad. En el tratamiento de los datos personales, el responsable debe garantizar estándares adecuados de seguridad, protegiéndolos contra el tratamiento no autorizado o ilícito, y contra su pérdida, filtración, daño accidental o destrucción. Las medidas de seguridad deben ser apropiadas y acordes con el tratamiento que se vaya a efectuar y con la naturaleza de los datos.\n\ng) Principio de transparencia e información. El responsable debe entregar al titular toda la información que sea necesaria para el ejercicio de los derechos que establece esta ley, incluyendo las políticas y las prácticas sobre el tratamiento de los datos…»",
+        "conversation_id": "1fff093047e84444888734ef82d1f512",
+        "mode": "demo",
+        "sources": [
+          {
+            "chunk_id": "art-3-p1",
+            "texto": "\"Artículo 3°.- Principios. El tratamiento de los datos personales se rige por los siguientes principios:\n\na) Principios de licitud y lealtad. Los datos personales sólo pueden tratarse de manera lícita y leal.\n\nEl responsable deberá ser capaz de acreditar la licitud del tratamiento de datos personales que realiza.\n\nb) Principio de finalidad. Los datos personales deben ser recolectados con fines específicos, explícitos y lícitos. El tratamiento de los datos personales debe limitarse al cumplimiento de estos fines.\n\nEn aplicación de este principio, no se pueden tratar los datos personales con fines distintos a los informados al momento de la recolección, salvo que el tratamiento sea para fines compatibles con los autorizados originalmente; que exista una relación contractual o precontractual entre el titular y el responsable que justifique el tratamiento de los datos con una finalidad distinta, siempre que se enmarque dentro de los fines del contrato o sea coherente con las tratativas o negociaciones previas a la celebración del mismo; que el titular otorgue nuevamente su consentimiento, y cuando lo disponga la ley.\n\nc) Principio de proporcionalidad. Los datos personales que se traten deben limitarse estrictamente a aquéllos que resulten necesarios, adecuados y pertinentes en relación con los fines del tratamiento.",
+            "articulo": "3",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/3",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.0,
+            "label": "Artículo 3 · Ley 19.628",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "art-3-p2",
+            "texto": "c) Principio de proporcionalidad. Los datos personales que se traten deben limitarse estrictamente a aquéllos que resulten necesarios, adecuados y pertinentes en relación con los fines del tratamiento.\n\nLos datos personales pueden ser conservados sólo por el período de tiempo que sea necesario para cumplir con los fines del tratamiento, luego de lo cual deben ser suprimidos o anonimizados, sin perjuicio de las excepciones que establezca la ley. Un período de tiempo mayor requiere autorización legal o consentimiento del titular.\n\nd) Principio de calidad. Los datos personales deben ser exactos, completos, actuales y pertinentes en relación con su proveniencia y los fines del tratamiento.\n\ne) Principio de responsabilidad. Quienes realicen tratamiento de los datos personales serán legalmente responsables del cumplimiento de los principios contenidos en este artículo y de las obligaciones y deberes de conformidad a la ley.\n\nf) Principio de seguridad. En el tratamiento de los datos personales, el responsable debe garantizar estándares adecuados de seguridad, protegiéndolos contra el tratamiento no autorizado o ilícito, y contra su pérdida, filtración, daño accidental o destrucción. Las medidas de seguridad deben ser apropiadas y acordes con el tratamiento que se vaya a efectuar y con la naturaleza de los datos.",
+            "articulo": "3",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "2/3",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.0,
+            "label": "Artículo 3 · Ley 19.628",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "art-3-p3",
+            "texto": "f) Principio de seguridad. En el tratamiento de los datos personales, el responsable debe garantizar estándares adecuados de seguridad, protegiéndolos contra el tratamiento no autorizado o ilícito, y contra su pérdida, filtración, daño accidental o destrucción. Las medidas de seguridad deben ser apropiadas y acordes con el tratamiento que se vaya a efectuar y con la naturaleza de los datos.\n\ng) Principio de transparencia e información. El responsable debe entregar al titular toda la información que sea necesaria para el ejercicio de los derechos que establece esta ley, incluyendo las políticas y las prácticas sobre el tratamiento de los datos personales, las que además deberán encontrarse permanentemente accesibles y a disposición de cualquier interesado de manera precisa, clara, inequívoca y gratuita.\n\nEl responsable debe adoptar las medidas adecuadas y oportunas para facilitar al titular el acceso a toda la información que señala esta ley, así como cualquier otra comunicación relativa al tratamiento que realiza.\n\nh) Principio de confidencialidad. El responsable de datos personales y quienes tengan acceso a ellos deberán guardar secreto o confidencialidad acerca de los mismos. El responsable establecerá controles y medidas adecuadas para preservar el secreto o confidencialidad. Este deber subsiste aún después de concluida la relación con el titular.\".",
+            "articulo": "3",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "3/3",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.0,
+            "label": "Artículo 3 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Qué dice el artículo 3?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 0.82,
+          "generation": 0.02,
+          "total": 1.5
+        }
+      }
+    },
+    {
+      "name": "Control por ámbito",
+      "request": {
+        "message": "¿Qué dice el artículo 4?",
+        "filters": {
+          "ambito": "transitorio"
+        }
+      },
+      "passed": true,
+      "response": {
+        "answer": "No encontré fragmentos para esta consulta en la búsqueda de demostración. Prueba indicando un artículo o reformulando la pregunta. Esto no demuestra que la ley no trate el tema.",
+        "conversation_id": "d75bbc96ef114040894b9e8b42212cbd",
+        "mode": "demo",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Qué dice el artículo 4?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 0.3,
+          "generation": 0.01,
+          "total": 0.94
+        }
+      }
+    },
+    {
+      "name": "Trato de texto HTML",
+      "request": {
+        "message": "<img src=x onerror=alert(1)> artículo 4",
+        "filters": {}
+      },
+      "passed": true,
+      "response": {
+        "answer": "Demostración: estos son extractos literales seleccionados por coincidencia de palabras. No se ha generado una respuesta con IA.\n\nArtículo 4 · Ley 19.628 [art-4]\n«Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la…»",
+        "conversation_id": "6adb5d1e9607416189f81cf9b0625d59",
+        "mode": "demo",
+        "sources": [
+          {
+            "chunk_id": "art-4",
+            "texto": "Artículo 4°.- Derechos del titular de datos. Toda persona, actuando por sí o a través de su representante legal o mandatario, según corresponda, tiene derecho de acceso, rectificación, supresión, oposición, portabilidad y bloqueo de sus datos personales, de conformidad a la presente ley.\n\nTales derechos son personales, intransferibles e irrenunciables y no pueden limitarse por ningún acto o convención.\n\nEn caso de fallecimiento del titular de datos, los derechos que reconoce esta ley pueden ser ejercidos por sus herederos.\n\nCon todo, los herederos no podrán acceder a los datos del causante, ni solicitar su rectificación o supresión, cuando la persona fallecida lo hubiese prohibido expresamente o así lo establezca una ley.",
+            "articulo": "4",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "De los derechos del titular de datos personales",
+            "score": 0.0,
+            "label": "Artículo 4 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "<img src=x onerror=alert(1)> artículo 4",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 0.0,
+          "retrieval": 0.36,
+          "generation": 0.02,
+          "total": 0.99
+        }
+      }
+    }
+  ]
+}

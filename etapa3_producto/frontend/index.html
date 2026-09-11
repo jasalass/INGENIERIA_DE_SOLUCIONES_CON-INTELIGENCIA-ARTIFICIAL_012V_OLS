@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123f38">
+  <title>Consulta · Ley 21.719</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/citations.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#question">Ir a la consulta</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Información del proyecto">
+      <a class="brand" href="/" aria-label="Consulta, inicio"><span class="brand-mark">§</span> consulta<span class="brand-dot">.</span></a>
+      <div class="side-heading">INGENIERÍA DE SOLUCIONES CON IA</div>
+      <h1>Una ley.<br>Un punto de partida<br>para tus preguntas.</h1>
+      <p class="side-copy">Explora el documento de la Ley 21.719 y revisa los fragmentos que sustentan cada consulta.</p>
+      <div class="document-card"><span class="eyebrow">DOCUMENTO DE REFERENCIA</span><strong>Ley N° 21.719</strong><span>Protección de datos personales · Chile</span><a href="/api/source.pdf" target="_blank" rel="noopener">Abrir PDF de referencia ↗</a></div>
+      <div class="side-bottom"><span>ISY0101 · Evaluación parcial 1</span><span>Juan Salas · Pamela Alvarez · Jenaro Marín</span></div>
+    </aside>
+    <main class="workspace">
+      <header class="topbar"><div><span class="eyebrow">ASISTENTE DOCUMENTAL</span><span id="connection" role="status">Conectando…</span></div><button id="new-chat" class="secondary" type="button">＋ Nueva consulta</button></header>
+      <div class="mode-banner" id="mode-banner"><span class="mode-dot"></span><p><strong id="mode-title">Comprobando el servicio</strong><span id="mode-description">Espera un momento antes de enviar tu consulta.</span></p></div>
+      <section id="messages" class="messages" aria-label="Conversación" role="log" aria-live="polite" aria-relevant="additions">
+        <div id="welcome" class="welcome"><span class="welcome-symbol" aria-hidden="true">§</span><p class="eyebrow">EMPIEZA POR UNA PREGUNTA</p><h2>Consulta el texto.<br>Vuelve siempre a la fuente.</h2><p>Busca por tema o indica un artículo. Podrás abrir cada fragmento y leer el contexto completo.</p><div class="suggestions"><button type="button" data-question="¿Qué dice el artículo 4 sobre los derechos del titular?">Derechos del titular <span>↗</span></button><button type="button" data-question="¿Qué dice el artículo 1 bis?">Ámbito de aplicación <span>↗</span></button><button type="button" data-question="¿Qué establecen las disposiciones transitorias?" data-scope="transitorio">Disposiciones transitorias <span>↗</span></button></div></div>
+      </section>
+      <footer class="composer-area">
+        <p id="error" class="error" role="alert" hidden></p>
+        <form id="chat-form">
+          <div class="search-options">
+            <details id="advanced-search">
+              <summary id="advanced-label">Búsqueda avanzada</summary>
+              <div class="filter-row"><label for="scope">Buscar en</label><select id="scope"><option value="">Todo el documento</option><option value="permanente">Disposiciones permanentes</option><option value="transitorio">Disposiciones transitorias</option></select></div>
+            </details>
+            <span id="counter">0 / 2000</span>
+          </div>
+          <div class="input-shell"><label class="sr-only" for="question">Tu pregunta sobre la Ley 21.719</label><textarea id="question" name="message" maxlength="2000" rows="2" placeholder="Escribe tu pregunta sobre la ley…" required></textarea><button id="send" type="submit" disabled>Enviar <span aria-hidden="true">↑</span></button></div>
+          <div class="composer-note"><span>Enter para enviar · Shift + Enter para otra línea</span><span>La memoria se reinicia al recargar.</span></div>
+        </form>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,398 @@
+{
+  "captured_at_utc": "2026-09-09T22:45:18.328958+00:00",
+  "health": {
+    "status": "ok",
+    "mode": "live",
+    "retrieval": "pgvector_cosine_exact",
+    "generation": "groq",
+    "model": "qwen/qwen3.6-27b",
+    "memory": "in_process",
+    "memory_exchanges": 6,
+    "session_ttl_seconds": 3600,
+    "provider_reachable": "not_checked"
+  },
+  "scope": "Consultas HTTP reales; checks funcionales, no evaluación jurídica exhaustiva. Datos de usuario ficticios.",
+  "passed": 8,
+  "total": 9,
+  "cases": [
+    {
+      "case": "Regresión: pregunta exacta del usuario",
+      "request": {
+        "message": "De qué trata la ley 21.719?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "La Ley N° 21.719 regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales [doc-21719-p1]. Para ello, introduce modificaciones en la Ley N° 19.628, sobre protección de la vida privada [doc-21719-p1]. Dicha ley modificada tiene por objeto regular la forma y condiciones en que se efectúa el tratamiento y protección de los datos personales de las personas naturales, conforme al artículo 19, N° 4, de la Constitución Política de la República [art-1].",
+        "conversation_id": "09539fb304c74722bd4a7ea8f9da2ffd",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          },
+          {
+            "chunk_id": "art-1",
+            "texto": "\"Artículo 1°.- Objeto y ámbito de aplicación. La presente ley tiene por objeto regular la forma y condiciones en la cual se efectúa el tratamiento y protección de los datos personales de las personas naturales, en conformidad al artículo 19, N° 4, de la Constitución Política de la República.\n\nTodo tratamiento de datos personales que realice una persona natural o jurídica, incluidos los órganos públicos, debe respetar los derechos y libertades de las personas y quedará sujeto a las disposiciones de esta ley.\n\nEl régimen de tratamiento y protección de datos establecido en esta ley no se aplicará al tratamiento de datos que se realice en el ejercicio de las libertades de emitir opinión y de informar reguladas por las leyes a que se refiere el artículo 19, N° 12, de la Constitución Política de la República. Los medios de comunicación social quedarán sujetos a las disposiciones de esta ley en lo relativo al tratamiento de datos que efectúen con una finalidad distinta a la de opinar e informar.\n\nTampoco serán aplicables las normas de la presente ley al tratamiento de datos que efectúen las personas naturales en relación con sus actividades personales.\".",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": "1",
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.8291024607099358,
+            "label": "Artículo 1 · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "De qué trata la ley 21.719?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 625.57,
+          "retrieval": 838.44,
+          "generation": 1093.82,
+          "total": 2635.55
+        }
+      }
+    },
+    {
+      "case": "Relación entre ley fuente y ley modificada",
+      "request": {
+        "message": "¿Por qué aparece la Ley 19.628 si el documento es la Ley 21.719?",
+        "conversation_id": "09539fb304c74722bd4a7ea8f9da2ffd",
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "La Ley 19.628 aparece porque la Ley 21.719 introduce modificaciones en ella. El documento de origen es la Ley 21.719, cuyo objeto es regular la protección y tratamiento de datos personales y crear la Agencia de Protección de Datos Personales [doc-21719-p1]. Para lograr esto, el artículo primero de la Ley 21.719 establece que se introducen modificaciones en la Ley N° 19.628, sobre protección de la vida privada [nivel1-primero]. Por tanto, la Ley 19.628 es la ley referenciada que se modifica dentro del texto de la Ley 21.719.",
+        "conversation_id": "09539fb304c74722bd4a7ea8f9da2ffd",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          },
+          {
+            "chunk_id": "nivel1-primero",
+            "texto": "\"Artículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": null,
+            "score": 0.8381033154139892,
+            "label": "Disposición: nivel1-primero",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Por qué la Ley 21.719 menciona o modifica la Ley 19.628?",
+        "turn_count": 2,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 488.2,
+          "retrieval": 583.33,
+          "generation": 900.44,
+          "total": 1972.81
+        }
+      }
+    },
+    {
+      "case": "Resumen general del PDF",
+      "request": {
+        "message": "Resume de qué trata este documento PDF",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "El documento corresponde a la Ley N° 21.719, que regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales [doc-21719-p1]. Su objeto principal es introducir modificaciones en la Ley N° 19.628, sobre protección de la vida privada [doc-21719-p1]. Entre las disposiciones modificadas se incluye el deber de información y transparencia del responsable de datos, quien debe facilitar públicamente detalles como su política de tratamiento, medidas de seguridad, categorías de datos tratados y los derechos de los titulares, como el acceso, rectificación y supresión de sus datos [art-14-ter-p1]. También se establecen requisitos para quienes han tenido participación en empresas de tratamiento de datos personales [art-30-quinquies-p3].",
+        "conversation_id": "4f993c81f58641bb8c1c9f14a4a0d07f",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          },
+          {
+            "chunk_id": "art-14-ter-p1",
+            "texto": "Artículo 14 ter.- Deber de información y transparencia. El responsable de datos debe facilitar y mantener permanentemente a disposición del público, en su sitio web o en cualquier otro medio de información equivalente, al menos, la siguiente información:\n\na) La política de tratamiento de datos personales que haya adoptado, la fecha y versión de la misma.\n\nb) La individualización del responsable de datos y su representante legal y la identificación del encargado de prevención, si existiere.\n\nc) El domicilio postal, la dirección de correo electrónico, el formulario de contacto o la identificación del medio tecnológico equivalente de uso común y fácil acceso mediante el cual se le notifican las solicitudes que realicen los titulares.\n\nd) Las categorías, clases o tipos de datos que trata; la descripción genérica del universo de personas que comprenden sus bases de datos; los destinatarios a los que se prevé comunicar o ceder los datos; las finalidades de los tratamientos que realiza; la base de legitimidad del tratamiento; y en caso de tratamientos que se basan en la satisfacción de intereses legítimos, cuáles serían éstos.\n\ne) La política y las medidas de seguridad adoptadas para proteger las bases de datos personales que administra.\n\nf) El derecho que le asiste al titular para solicitar ante el responsable, acceso, rectificación, supresión, oposición y portabilidad de sus datos personales, de conformidad a la ley.",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": "14",
+            "articulo_sufijo": "ter",
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "1/2",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Del tratamiento de los datos personales y de las categorías especiales de datos Párrafo Primero Del consentimiento del titular, de las obligaciones y deberes del responsable y del tratamiento de datos en general",
+            "score": 0.7958009604988006,
+            "label": "Artículo 14 ter · Ley 19.628",
+            "url": "/api/source.pdf"
+          },
+          {
+            "chunk_id": "art-30-quinquies-p3",
+            "texto": "d) Quienes, dentro del último año, hayan sido gerentes, delegados de datos, directores o hayan tenido participación en la propiedad de una empresa cuyo objeto o giro comercial verse sobre el tratamiento de datos personales.\n\nEn todo lo no expresamente regulado en este artículo, regirán las normas del Párrafo 2° del Título III del decreto con fuerza de ley N° 1-19.653, de 2000, del Ministerio Secretaría General de la Presidencia, que fija el texto refundido, coordinado y sistematizado de la ley N° 18.575, Orgánica Constitucional de Bases Generales de la Administración del Estado.",
+            "documento_origen": "21.719",
+            "pagina_pdf": null,
+            "articulo": "30",
+            "articulo_sufijo": "quinquies",
+            "nivel1": "primero",
+            "ambito": "permanente",
+            "ley_referenciada": "19.628",
+            "parte": "3/3",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Autoridad de Control en materia de Protección de Datos Personales",
+            "score": 0.7964853315283245,
+            "label": "Artículo 30 quinquies · Ley 19.628",
+            "url": "/api/source.pdf"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "Resume de qué trata este documento PDF",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 908.41,
+          "retrieval": 642.8,
+          "generation": 1011.97,
+          "total": 2564.01
+        }
+      }
+    },
+    {
+      "case": "Número de ley sin separador",
+      "request": {
+        "message": "¿Cuál es el objetivo de la ley 21719?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "La Ley N° 21.719 tiene por objeto regular la protección y el tratamiento de los datos personales, así como crear la Agencia de Protección de Datos Personales [doc-21719-p1]. Esta ley introduce modificaciones en la Ley N° 19.628, sobre protección de la vida privada [doc-21719-p1].",
+        "conversation_id": "794b78721edd40e6baabdae3488a2523",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          }
+        ],
+        "insufficient_context": false,
+        "retrieval_query": "¿Cuál es el objetivo de la ley 21719?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 637.57,
+          "retrieval": 564.8,
+          "generation": 1044.0,
+          "total": 2247.21
+        }
+      }
+    },
+    {
+      "case": "Otra ley no se confunde con el documento",
+      "request": {
+        "message": "¿De qué trata la Ley 99.999?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No hay evidencia suficiente en los fragmentos proporcionados para responder sobre la Ley 99.999. El documento de origen es la Ley N° 21.719, la cual regula la protección y el tratamiento de los datos personales y crea la Agencia de Protección de Datos Personales, introduciendo modificaciones en la Ley N° 19.628 [doc-21719-p1]. No se menciona ninguna ley con el número 99.999.",
+        "conversation_id": "581af786bf70440098f4e01f4f1a7911",
+        "mode": "live",
+        "sources": [
+          {
+            "chunk_id": "doc-21719-p1",
+            "texto": "LEY NÚM. 21.719 REGULA LA PROTECCIÓN Y EL TRATAMIENTO DE LOS DATOS PERSONALES Y CREA LA AGENCIA DE PROTECCIÓN DE DATOS PERSONALES\n\n[…]\n\nArtículo primero.- Introdúcense las siguientes modificaciones en la ley N° 19.628, sobre protección de la vida privada:",
+            "documento_origen": "21.719",
+            "pagina_pdf": 1,
+            "articulo": null,
+            "articulo_sufijo": null,
+            "nivel1": null,
+            "ambito": null,
+            "ley_referenciada": null,
+            "parte": "1/1",
+            "fuente": "Biblioteca del Congreso Nacional (leychile.cl)",
+            "titulo_nombre": "Título del documento y encabezado del artículo primero",
+            "score": null,
+            "label": "Documento Ley 21.719 · Página 1",
+            "url": "/api/source.pdf#page=1"
+          }
+        ],
+        "insufficient_context": true,
+        "retrieval_query": "¿De qué trata la Ley 99.999?",
+        "turn_count": 1,
+        "answer_kind": "document",
+        "timings_ms": {
+          "planning": 385.24,
+          "retrieval": 397.7,
+          "generation": 1134.8,
+          "total": 1918.59
+        }
+      }
+    },
+    {
+      "case": "Presentación",
+      "request": {
+        "message": "Hola, me llamo Felipe",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "Hola Felipe, un gusto saludarte.",
+        "conversation_id": "74a57179641e44a89e10f76ca6fba1eb",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": false,
+        "retrieval_query": "Hola, me llamo Felipe",
+        "turn_count": 1,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 428.26,
+          "retrieval": 0.0,
+          "generation": 422.49,
+          "total": 851.44
+        }
+      }
+    },
+    {
+      "case": "Recuerdo de nombre",
+      "request": {
+        "message": "¿Cómo me llamaba?",
+        "conversation_id": "74a57179641e44a89e10f76ca6fba1eb",
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "Te llamas Felipe.",
+        "conversation_id": "74a57179641e44a89e10f76ca6fba1eb",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": false,
+        "retrieval_query": "¿Cómo me llamaba?",
+        "turn_count": 2,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 404.89,
+          "retrieval": 0.0,
+          "generation": 9102.93,
+          "total": 9508.55
+        }
+      }
+    },
+    {
+      "case": "Sesión nueva sin nombre",
+      "request": {
+        "message": "¿Cómo me llamo?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 200,
+      "passed": true,
+      "response": {
+        "answer": "No recuerdo tu nombre, ya que no aparece en esta conversación.",
+        "conversation_id": "021576d0a1724e48b1584626206075dd",
+        "mode": "live",
+        "sources": [],
+        "insufficient_context": true,
+        "retrieval_query": "¿Cómo me llamo?",
+        "turn_count": 1,
+        "answer_kind": "conversation",
+        "timings_ms": {
+          "planning": 794.28,
+          "retrieval": 0.0,
+          "generation": 451.94,
+          "total": 1246.97
+        }
+      }
+    },
+    {
+      "case": "Artículo con cita",
+      "request": {
+        "message": "¿Qué dice el artículo 4?",
+        "conversation_id": null,
+        "filters": {}
+      },
+      "status": 503,
+      "passed": false,
+      "response": {
+        "detail": "No se pudo completar la consulta. Intenta nuevamente; no se guardó este turno."
+      }
+    }
+  ]
+}
