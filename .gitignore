@@ -12,3 +12,4 @@ htmlcov/
 .env
 .env.*
 !.env.example
+etapa1_datos/explicacion_etapa1.md
